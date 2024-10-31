@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "123179034139",
+    "project_id": "parcial-tp3-f8712",
+    "storage_bucket": "parcial-tp3-f8712.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123179034139:android:a6dddde097dbb6c1993abe",
+        "android_client_info": {
+          "package_name": "com.example.parcialtp3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyJLLflIgxsSMhnZq50_s0sY5ADl6wCvg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
