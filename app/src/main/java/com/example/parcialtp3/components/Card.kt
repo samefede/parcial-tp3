@@ -25,12 +25,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.parcialtp3.ui.theme.Green800
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import com.example.parcialtp3.R
 import com.example.parcialtp3.ui.theme.Purple900
+import com.example.parcialtp3.ui.theme.TextXL2Bold
+import com.example.parcialtp3.ui.theme.TextXS1Bold
 
 @Composable
 fun Card(cardNumber: String){
@@ -91,17 +91,13 @@ fun Card(cardNumber: String){
                         Text(
                             text = if (isShowingFullNumber.value) cardNumber else maskedCardNumber,
                             color = Color.White,
-                            fontSize = 20.sp,
-                            lineHeight = 24.sp,
-                            fontWeight = FontWeight(700)
-                            )
+                            style = TextXL2Bold
+                        )
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
                             text = "05/23",
                             color = Color.White,
-                            fontSize = 20.sp,
-                            lineHeight = 24.sp,
-                            fontWeight = FontWeight(700)
+                            style = TextXL2Bold
                         )
                     }
                     Image(
@@ -134,9 +130,7 @@ fun Card(cardNumber: String){
                 color = Purple900,
                 modifier = Modifier
                     .padding(start = 8.dp),
-                fontSize = 12.sp,
-                lineHeight = 19.6.sp,
-                fontWeight = FontWeight(700)
+                style = TextXS1Bold
             )
 
         }
