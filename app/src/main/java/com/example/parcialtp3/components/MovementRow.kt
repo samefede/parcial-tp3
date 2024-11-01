@@ -27,7 +27,7 @@ import com.example.parcialtp3.ui.theme.White2
 import java.util.Locale
 
 @Composable
-fun MovementRow(date: String, description: String = "Transferencia Aut. 394991", amount: Double = 100.0, type: String) {
+fun MovementRow(date: String, description: String, transactionId: String, amount: Double = 100.0, type: String) {
     val formattedAmount = String.format(Locale("es", "ES"), "%,.2f", amount).replace('.', ',')
     val amountText = if (type == "credit") "+ $$formattedAmount" else "- $$formattedAmount"
     val amountColor = if (type == "credit") Color(0xFF00A650) else Red900
@@ -46,7 +46,7 @@ fun MovementRow(date: String, description: String = "Transferencia Aut. 394991",
         ) {
             // Fecha
             Text(
-                text = "19-03-20",
+                text = date,
                 fontSize = 14.sp,
                 color = Color.Black,
                 modifier = Modifier.width(72.dp) //TODO: REVISAR DP
@@ -60,14 +60,14 @@ fun MovementRow(date: String, description: String = "Transferencia Aut. 394991",
                 horizontalAlignment = Alignment.Start,
             ) {
                 Text(
-                    text = "Transferencia",
+                    text = description,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Normal,
                     color = Color.Black,
                     maxLines = 1 // Mantener en una línea si es posible
                 )
                 Text(
-                    text = "Aut. 394991",
+                    text = "Aut. $transactionId",
                     fontSize = 14.sp,
                     color = Color.Black,
                     maxLines = 1
@@ -87,5 +87,5 @@ fun MovementRow(date: String, description: String = "Transferencia Aut. 394991",
 @Composable
 @Preview
 fun MovementRowPreview() {
-    MovementRow("19-03-20", "Transferencia Aut. 394991", 100.0, "debit")
+    MovementRow("19-03-20", "Transferencia", "394991", 100.0, "debit")
 }
