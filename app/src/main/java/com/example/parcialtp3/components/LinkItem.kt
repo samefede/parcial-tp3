@@ -1,8 +1,10 @@
 package com.example.parcialtp3.components
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,6 +19,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -44,6 +50,8 @@ fun LinkItem(buttonName: String, description: String = "", isFirst: Boolean = fa
         else -> RoundedCornerShape(0.dp)
     }
 
+    var isClicked by remember { mutableStateOf(false) }
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -51,6 +59,7 @@ fun LinkItem(buttonName: String, description: String = "", isFirst: Boolean = fa
             .clip(shape)
             .background(White2)
             .border(1.dp, Gray500, shape)
+            .clickable { isClicked = !isClicked }
             .padding(horizontal = 12.dp, vertical = if(descriptionEmpty) 8.dp else 16.dp),
         contentAlignment = Alignment.Center
     ) {
