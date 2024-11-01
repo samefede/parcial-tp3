@@ -20,8 +20,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.Gray500
+import com.example.parcialtp3.ui.theme.Green900
 import com.example.parcialtp3.ui.theme.Red900
+import com.example.parcialtp3.ui.theme.TextXS1Bold
+import com.example.parcialtp3.ui.theme.TextXS1Regular
 import com.example.parcialtp3.ui.theme.White
 import com.example.parcialtp3.ui.theme.White2
 import java.util.Locale
@@ -30,7 +34,7 @@ import java.util.Locale
 fun MovementRow(date: String, description: String, transactionId: String, amount: Double = 100.0, type: String) {
     val formattedAmount = String.format(Locale("es", "ES"), "%,.2f", amount).replace('.', ',')
     val amountText = if (type == "credit") "+ $$formattedAmount" else "- $$formattedAmount"
-    val amountColor = if (type == "credit") Color(0xFF00A650) else Red900
+    val amountColor = if (type == "credit") Green900 else Red900
 
     Box(
         modifier = Modifier
@@ -47,8 +51,8 @@ fun MovementRow(date: String, description: String, transactionId: String, amount
             // Fecha
             Text(
                 text = date,
-                fontSize = 14.sp,
-                color = Color.Black,
+                style = TextXS1Regular,
+                color = Black,
                 modifier = Modifier.width(72.dp) //TODO: REVISAR DP
             )
 
@@ -61,24 +65,22 @@ fun MovementRow(date: String, description: String, transactionId: String, amount
             ) {
                 Text(
                     text = description,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Normal,
-                    color = Color.Black,
-                    maxLines = 1 // Mantener en una línea si es posible
+                    style = TextXS1Regular,
+                    color = Black,
+                    maxLines = 1
                 )
                 Text(
                     text = "Aut. $transactionId",
-                    fontSize = 14.sp,
-                    color = Color.Black,
+                    style = TextXS1Regular,
+                    color = Black,
                     maxLines = 1
                 )
 
             }
                 Text(
                     text = amountText,
-                    fontSize = 14.sp,
-                    color = amountColor, // Color verde similar al de la imagen
-                    fontWeight = FontWeight.Bold
+                    style = TextXS1Bold,
+                    color = amountColor,
                 )
         }
     }
