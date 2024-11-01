@@ -12,6 +12,7 @@ val Pink40 = Color(0xFF7D5260)
 
 val Black = Color(0xFF2A1846)
 val White = Color(0xFF0FD08B)
+val White2 = Color(0xFFFFFFFF)
 
 val Gray900 = Color(0xFF575372)
 val Gray500 = Color(0xFFD1D1D7)
@@ -35,3 +36,4 @@ val Yellow900 = Color(0xFFFFE05F)
 val Yellow800 = Color(0xFFFFE05F)
 val Yellow500 = Color(0xFFFFEC9F)
 val Yellow100 = Color(0xFFFFF9DF)
+
