@@ -26,7 +26,7 @@ fun MainRouteNav(
         modifier = modifier
     ) {
         composable(route = AppDestinations.HOME_ROUTE) {
-            HomeRoute(navActions = navigationActions)
+            HomeRoute(navigationAction = navigationActions)
         }
 
         composable(route = AppDestinations.ACCOUNT_ROUTE) {
