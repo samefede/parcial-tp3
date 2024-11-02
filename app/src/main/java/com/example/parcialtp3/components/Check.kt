@@ -37,7 +37,6 @@ fun CustomRadioButton(text: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(White2)
             .padding(horizontal = 16.dp, vertical = 8.dp)
             .focusable()
             .onFocusChanged { focusState ->
