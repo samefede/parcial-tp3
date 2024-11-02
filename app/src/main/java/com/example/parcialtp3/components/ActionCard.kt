@@ -42,7 +42,7 @@ fun ActionCard(
         modifier = modifier
             .fillMaxWidth().height(96.dp) //130 110
             .border(
-                width = 0.1.dp,
+                width = 0.6.dp,
                 color = Color(0xFFD1D1D7),
                 shape = shape,
 
