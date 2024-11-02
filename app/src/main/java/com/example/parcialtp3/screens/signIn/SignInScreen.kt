@@ -104,8 +104,11 @@ fun SignIn(
                             Log.d("SignIn", "Response: $loginResponse")
                         }
                     })
-                    loginResponse?.let {
-                        navigationAction.navigateToHome()
+
+                    LaunchedEffect(loginResponse) {
+                        loginResponse?.let {
+                            navigationAction.navigateToHome()
+                        }
                     }
                 }
             }

@@ -22,7 +22,10 @@ class MainNavAction(
     navController: NavHostController,
 ){
     val navigateToHome: () -> Unit = {
-        navController.navigate(AppDestinations.HOME_ROUTE)
+        navController.navigate(AppDestinations.HOME_ROUTE) {
+            popUpTo(AppDestinations.SIGN_IN_ROUTE) { inclusive = true }
+            launchSingleTop = true
+        }
     }
     val navigateToAccount: () -> Unit = {
         navController.navigate(AppDestinations.ACCOUNT_ROUTE)
@@ -37,7 +40,10 @@ class MainNavAction(
         navController.navigate(AppDestinations.SERVICE_ROUTE)
     }
     val navigateToSignIn: () -> Unit = {
-        navController.navigate(AppDestinations.SIGN_IN_ROUTE)
+        navController.navigate(AppDestinations.SIGN_IN_ROUTE) {
+            popUpTo(AppDestinations.SPLASH_ROUTE) { inclusive = true }
+            launchSingleTop = true
+        }
     }
 
     fun hideBottomBar(location: String?): Boolean{
