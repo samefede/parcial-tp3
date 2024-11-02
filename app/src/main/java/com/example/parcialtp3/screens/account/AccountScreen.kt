@@ -48,6 +48,8 @@ fun AccountScreen(
     val creditCardTransaction: List<Transaction>? = walletState?.get(0)?.transactions?.creditCardTransactions
     val allTransactions: List<Transaction> = (bankAccountTransactions ?: emptyList()) +
                                              (creditCardTransaction ?: emptyList())
+    val sortedTransactions = allTransactions.sortedByDescending { it.date }
+
     println("walletState: $walletState")
     println("Bank Account Transactions: $bankAccountTransactions")
     Column(
@@ -81,8 +83,8 @@ fun AccountScreen(
         }
 
         LazyColumn {
-            items(allTransactions.size) { index ->
-                val transaction = allTransactions[index]
+            items(sortedTransactions.size) { index ->
+                val transaction = sortedTransactions[index]
                 walletState?.get(0)?.userId?.let {
                     MovementRow(
                         date = transaction.date,
