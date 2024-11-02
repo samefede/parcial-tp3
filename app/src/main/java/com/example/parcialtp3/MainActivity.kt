@@ -16,6 +16,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.parcialtp3.components.Input
 import com.example.parcialtp3.components.LinkItem
 import com.example.parcialtp3.components.MovementRow
+import androidx.navigation.compose.rememberNavController
+import com.example.parcialtp3.components.BottomBar
+import com.example.parcialtp3.navigation.MainNavAction
+import com.example.parcialtp3.navigation.MainRouteNav
 import androidx.compose.foundation.background
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -28,19 +32,34 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ParcialTP3Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+
+                val navController = rememberNavController()
+                val navigationActions = MainNavAction(navController)
+
+                val shouldHideBottomBar = navigationActions.hideBottomBar(
+                    navController.currentBackStackEntry?.destination?.route
+                )
+
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    bottomBar = {
+                        if(!shouldHideBottomBar){
+                            BottomBar(navigationActions = navigationActions)
+                        }
+                    }
+                ) { innerPadding ->
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(horizontal = 12.dp, vertical = 8.dp),
+                            .padding(innerPadding),
                         contentAlignment = Alignment.Center
+
                     ) {
-                        innerPadding
-                        //LinkItem("Quiero mi tarjeta física", "", isFirst = true, isLast = false)
-                        //MovementRow(date = "19-03-20", description = "Transferencia", transactionId = "394991", type = "credit")
-                        //Input(inputName = "DNI o E-mail", inputType = "text", icon = 0, onTextChange = {})
-                        //Input(inputName = "Contraseña", inputType = "password", onTextChange = {})
-                        SignIn()
+                        MainRouteNav(
+                            navController = navController,
+                            navigationActions = navigationActions
+                        )
+
                     }
                 }
             }

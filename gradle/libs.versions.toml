@@ -15,6 +15,8 @@ lifecycleViewmodelKtx = "2.8.7"
 runtimeLivedata = "1.7.5"
 generativeai = "0.9.0"
 firebaseVertexai = "16.0.1"
+graphicsShapesAndroid = "1.0.1"
+navigationCompose = "2.8.3"
 
 [libraries]
 androidx-compose-bom-v202411 = { module = "androidx.compose:compose-bom", version.ref = "composeBomVersion" }
@@ -34,6 +36,8 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-graphics-shapes-android = { group = "androidx.graphics", name = "graphics-shapes-android", version.ref = "graphicsShapesAndroid" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
 ui = { module = "androidx.compose.ui:ui" }
 androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
