@@ -64,7 +64,7 @@ fun Card(cardNumber: String){
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(26.dp),
+                    .padding(25.dp),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 Box(
