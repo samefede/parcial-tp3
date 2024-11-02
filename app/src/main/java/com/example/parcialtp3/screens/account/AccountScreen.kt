@@ -44,11 +44,12 @@ fun AccountScreen(
     }
 
     val walletState by walletViewModel.wallet.observeAsState()
-    val bankAccountTransactions: List<Transaction>? = walletState?.get(0)?.transactions?.bankAccountTransaction
+    val bankAccountTransactions: List<Transaction>? = walletState?.get(0)?.transactions?.bankAccountTransactions
     val creditCardTransaction: List<Transaction>? = walletState?.get(0)?.transactions?.creditCardTransactions
     val allTransactions: List<Transaction> = (bankAccountTransactions ?: emptyList()) +
                                              (creditCardTransaction ?: emptyList())
-
+    println("walletState: $walletState")
+    println("Bank Account Transactions: $bankAccountTransactions")
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -79,12 +80,17 @@ fun AccountScreen(
 
         }
 
-        allTransactions.let { transactions ->
-            LazyColumn {
-                items(allTransactions.size) { index ->
-                    val transaction = transactions[index]
-                    MovementRow(date = transaction.date, description = transaction.description, transactionId = transaction.transactionId, amount = transaction.amount, type =transaction.type,  )
-
+        LazyColumn {
+            items(allTransactions.size) { index ->
+                val transaction = allTransactions[index]
+                walletState?.get(0)?.userId?.let {
+                    MovementRow(
+                        date = transaction.date,
+                        description = transaction.description,
+                        transactionId = it,
+                        amount = transaction.amount,
+                        type = transaction.type
+                    )
                 }
             }
         }
