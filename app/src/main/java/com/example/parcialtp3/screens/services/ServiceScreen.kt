@@ -24,7 +24,7 @@ fun ServiceScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Gray100)
-            .padding(25.dp)
+            .padding(horizontal = 12.dp)
     ) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),

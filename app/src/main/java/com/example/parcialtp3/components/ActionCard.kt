@@ -38,9 +38,9 @@ fun ActionCard(
     Card(
         shape = shape,
         colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(Elevation),
+        //elevation = CardDefaults.cardElevation(Elevation),
         modifier = modifier
-            .size(width = 112.dp, height = 96.dp)
+            .fillMaxWidth().height(96.dp) //130 110
             .border(
                 width = 0.1.dp,
                 color = Color(0xFFD1D1D7),

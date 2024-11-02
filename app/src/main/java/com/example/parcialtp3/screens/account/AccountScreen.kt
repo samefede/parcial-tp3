@@ -5,12 +5,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -55,17 +59,31 @@ fun AccountScreen(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        walletState?.get(0)?.let { TotalAmountCard(amount = it.balance, cvu = it.bankAccount.cvu) }
+        Column (
+            modifier = Modifier.padding(horizontal = 12.dp),
+        ){
+            walletState?.get(0)?.let { TotalAmountCard(amount = it.balance, cvu = it.bankAccount.cvu) }
 
-        Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(25.dp))
 
-        Row(
+            Row {
+                LazyVerticalGrid(columns = GridCells.Fixed(3)) {
+                    item {
+                        ActionCard(iconResId = R.drawable.cargardinero , textLine1 = "CARGAR", textLine2 = "DINERO", topLeftCornerRadius = 8.dp, bottomLeftCornerRadius = 8.dp)
 
-        ) {
-            ActionCard(iconResId = R.drawable.cargardinero , textLine1 = "CARGAR", textLine2 = "DINERO", topLeftCornerRadius = 8.dp, bottomLeftCornerRadius = 8.dp)
-            ActionCard(iconResId = R.drawable.extraerdinero , textLine1 = "EXTRAER", textLine2 = "DINERO")
-            ActionCard(iconResId = R.drawable.transferencia , textLine1 = "TRANSFERIR", textLine2 = "DINERO", topRightCornerRadius = 8.dp, bottomRightCornerRadius = 8.dp)
+                    }
+                    item {
+                        ActionCard(iconResId = R.drawable.extraerdinero , textLine1 = "EXTRAER", textLine2 = "DINERO")
+
+                    }
+                    item {
+                        ActionCard(iconResId = R.drawable.transferencia , textLine1 = "TRANSFERIR", textLine2 = "DINERO", topRightCornerRadius = 8.dp, bottomRightCornerRadius = 8.dp)
+                    }
+                }
+            }
+
         }
+
 
         Spacer(modifier = Modifier.height(25.dp))
 
@@ -96,13 +114,7 @@ fun AccountScreen(
                 }
             }
         }
-
     }
-
-
-
-
-
 }
 
 
