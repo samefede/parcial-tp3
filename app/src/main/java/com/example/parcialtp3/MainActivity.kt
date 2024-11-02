@@ -22,7 +22,7 @@ import com.example.parcialtp3.navigation.MainNavAction
 import com.example.parcialtp3.navigation.MainRouteNav
 import androidx.compose.foundation.background
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.parcialtp3.screens.SignIn
 import com.example.parcialtp3.ui.theme.ParcialTP3Theme
 
@@ -42,18 +42,19 @@ class MainActivity : ComponentActivity() {
 
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
+
                     bottomBar = {
-                        if(!shouldHideBottomBar){
+                        val currentLocation = navController.currentBackStackEntryAsState().value?.destination?.route
+                        if (!navigationActions.hideBottomBar(currentLocation)) {
                             BottomBar(navigationActions = navigationActions)
                         }
-                    }
+                    },
                 ) { innerPadding ->
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(innerPadding),
                         contentAlignment = Alignment.Center
-
                     ) {
                         MainRouteNav(
                             navController = navController,
