@@ -17,6 +17,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3.components.BottomBar
 import com.example.parcialtp3.navigation.MainNavAction
 import com.example.parcialtp3.navigation.MainRouteNav
+import androidx.compose.foundation.background
+import androidx.compose.ui.graphics.Color
 import com.example.parcialtp3.screens.SignIn
 import com.example.parcialtp3.ui.theme.ParcialTP3Theme
 
@@ -33,7 +35,7 @@ class MainActivity : ComponentActivity() {
                 val shouldHideBottomBar = navigationActions.hideBottomBar(
                     navController.currentBackStackEntry?.destination?.route
                 )
-                
+
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     bottomBar = {
