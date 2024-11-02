@@ -12,7 +12,7 @@ import com.example.parcialtp3.ui.theme.Gray100
 
 @Composable
 @Preview
-fun CargarTarjeta() {
+fun CardCharge() {
     Column(
         modifier = Modifier
             .fillMaxSize()

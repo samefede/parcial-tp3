@@ -1,11 +1,14 @@
 package com.example.partialtp3.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,17 +19,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.parcialtp3.R
 import com.example.parcialtp3.ui.theme.Black
-import com.example.parcialtp3.ui.theme.TextXL2Regular
+import com.example.parcialtp3.ui.theme.TextXL2Bold
 
 @Composable
 fun SuccessMessage() {
-    Box(
-        modifier = Modifier
-            .width(300.dp)
-            .height(168.dp)
-    ) {
+    Box {
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .width(300.dp)
+                .height(168.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
                 painter = painterResource(id = R.drawable.ok),
@@ -41,7 +43,7 @@ fun SuccessMessage() {
             Text(
                 text = "Tu operación se ha realizado con éxito",
                 color = Black,
-                style = TextXL2Regular,
+                style = TextXL2Bold,
                 textAlign = TextAlign.Center
             )
         }
