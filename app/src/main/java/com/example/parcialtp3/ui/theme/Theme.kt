@@ -3,6 +3,7 @@ package com.example.parcialtp3.ui.theme
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.darkColorScheme
@@ -34,6 +35,7 @@ val Shapes = Shapes(
     extraLarge = RoundedCornerShape(28.dp)
 )
 
+val Elevation = 4.dp
 @Composable
 fun ParcialTP3Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),
