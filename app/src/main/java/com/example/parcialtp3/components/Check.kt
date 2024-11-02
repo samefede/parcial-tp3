@@ -37,7 +37,6 @@ fun CustomRadioButton(text: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
             .focusable()
             .onFocusChanged { focusState ->
                 isFocused = focusState.isFocused

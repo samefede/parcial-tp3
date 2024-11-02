@@ -139,7 +139,7 @@ fun Input(inputName: String, inputType: String, onTextChange: (String) -> Unit) 
                     }
                     if (inputType == "password") {
                         Image(
-                            painter = painterResource(id = if (isPasswordVisible) R.drawable.notshow else R.drawable.show),
+                            painter = painterResource(id = if (!isPasswordVisible) R.drawable.notshow else R.drawable.show),
                             contentDescription = "Hide/Show Password",
                             modifier = Modifier
                                 .clickable { isPasswordVisible = !isPasswordVisible }

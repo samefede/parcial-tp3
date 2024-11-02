@@ -1,6 +1,10 @@
 package com.example.parcialtp3.screens
 
 import android.util.Log
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,6 +16,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -20,14 +26,17 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.parcialtp3.screens.signIn.SignInViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.parcialtp3.R
 import com.example.parcialtp3.components.CustomButton
 import com.example.parcialtp3.components.CustomRadioButton
 import com.example.parcialtp3.components.Input
@@ -38,6 +47,7 @@ import com.example.parcialtp3.navigation.MainNavAction
 import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.Gray100
 import com.example.parcialtp3.ui.theme.Green800
+import com.example.parcialtp3.ui.theme.Green900
 import com.example.parcialtp3.ui.theme.Purple900
 import com.example.parcialtp3.ui.theme.TextBaseBold
 import com.example.parcialtp3.ui.theme.TextXS1Bold
@@ -52,85 +62,255 @@ fun SignIn(
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var loginResponse by remember { mutableStateOf<String?>(null) }
-    val walletViewModel: WalletViewModel = viewModel()
 
-    LaunchedEffect(Unit) {
-        walletViewModel.fetchWallet()
-    }
-
-    val walletState by walletViewModel.wallet.observeAsState()
     Box(modifier = Modifier
         .fillMaxSize()
         .background(Green800)
     ){
-        Logo()
 
         Column(modifier = Modifier.fillMaxHeight()) {
-            Spacer(modifier = Modifier.weight(1f)) // This will take up the top half of the screen
-            Box(
-                modifier = Modifier
-                    .weight(1.5f)
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
-                    .background(Gray100)
-                    .padding(horizontal = 12.dp, vertical = 24.dp)
-            ) {
-                Column(modifier = modifier) {
-                    Text(
-                        text = "Ingresa a tu cuenta:",
-                        style = TextBaseBold,
-                        color = Black,
-                        modifier = Modifier.fillMaxWidth()
-                    )
 
-                    Spacer(modifier = Modifier.height(24.dp))
+                Box(
+                    modifier = Modifier
+                        .weight(0.8f)
+                        .fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ){
+                    Column (
+                        modifier = Modifier
+                            .height(153.5.dp)
+                            .width(288.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally)
+                    {
+                        Logo()
+                        //40.dp o 25.dp
+                        Spacer(modifier = Modifier.size(25.dp))
 
-                    Input(inputName = "DNI o E-mail", inputType = "text", onTextChange = { username = it })
-                    Input(inputName = "Contraseña", inputType = "password", onTextChange = { password = it })
+                        Image(
+                            painter = painterResource(id = R.drawable.dialogtriangle),
+                            contentDescription = "Una billetera"
+                        )
 
-                    Row (
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.End
-                    ) {
-                        Text(text = "Olvidé mi contraseña", color = Purple900, style = TextXS1Bold)
-                    }
+                        Row(){
 
+                            Image(
+                                painter = painterResource(id = R.drawable.unabilletera),
+                                contentDescription = "Una billetera"
+                            )
 
-                    CustomRadioButton(text = "Recordar datos de ingreso")
+                            Spacer(modifier = Modifier.size(4.dp))
 
-                    CustomButton(text = "Ingresar", onClick = {
-                        viewModel.signIn(username, password) { response ->
-                            loginResponse = response?.token ?: "Login failed"
-                            Log.d("SignIn", "Response: $loginResponse")
+                            Box(
+                                modifier = Modifier
+                                    .size(56.dp, 36.dp) // Set the size of the rectangle
+                                    .clip(RoundedCornerShape(100.dp)) // Set the corner radius
+                                    .background(Green900) // Set the background color
+                            )
                         }
-                    })
 
-                    LaunchedEffect(loginResponse) {
-                        loginResponse?.let {
-                            navigationAction.navigateToHome()
+                        Spacer(modifier = Modifier.size(5.dp))
+                        Row(){
+                            Box(
+                                modifier = Modifier
+                                    .size(56.dp, 36.dp) // Set the size of the rectangle
+                                    .clip(RoundedCornerShape(100.dp)) // Set the corner radius
+                                    .background(Green900) // Set the background color
+                            )
+
+                            Spacer(modifier = Modifier.size(4.dp))
+
+                            Image(
+                                painter = painterResource(id = R.drawable.simpleparavos),
+                                contentDescription = "Simple Para Vos."
+                            )
+                        }
+                    }
+                }
+
+                Box(
+                    modifier = Modifier
+                        .weight(1.2f)
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
+                        .background(Gray100)
+                        .padding(horizontal = 12.dp, vertical = 24.dp)
+                ) {
+                    Column() {
+                        Text(
+                            text = "Ingresa a tu cuenta:",
+                            style = TextBaseBold,
+                            color = Black,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        Spacer(modifier = Modifier.height(24.dp))
+
+                        Input(inputName = "DNI o E-mail", inputType = "text", onTextChange = { username = it })
+                        Input(inputName = "Contraseña", inputType = "password", onTextChange = { password = it })
+
+                        Row (
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.End
+                        ) {
+                            Text(text = "Olvidé mi contraseña", color = Purple900, style = TextXS1Bold)
+                        }
+
+                        Spacer(modifier = Modifier.size(24.dp))
+
+                        CustomRadioButton(text = "Recordar datos de ingreso")
+
+                        Spacer(modifier = Modifier.size(24.dp))
+
+                        CustomButton(text = "Ingresar", onClick = {
+                            viewModel.signIn(username, password) { response ->
+                                loginResponse = response?.token ?: "Login failed"
+                                Log.d("SignIn", "Response: $loginResponse")
+                            }
+                        })
+
+                        LaunchedEffect(loginResponse) {
+                            loginResponse?.let {
+                                navigationAction.navigateToHome()
+                            }
                         }
                     }
                 }
             }
+    }
+}
+
+@Composable
+@Preview
+fun SignInContent() {
+    val viewModel: SignInViewModel = viewModel()
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var loginResponse by remember { mutableStateOf<String?>(null) }
+    var isVisible by remember { mutableStateOf(true) }
+
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .background(Green800)
+    ){
+
+        Column(modifier = Modifier.fillMaxHeight()) {
+                Box(
+                    modifier = Modifier
+                        .weight(0.8f)
+                        .fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ){
+                    Column (
+                        modifier = Modifier
+                            .height(153.5.dp)
+                            .width(288.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally)
+                    {
+                        Logo()
+                        //40.dp o 25.dp
+                        Spacer(modifier = Modifier.size(25.dp))
+
+                        Image(
+                            painter = painterResource(id = R.drawable.dialogtriangle),
+                            contentDescription = "Una billetera"
+                        )
+
+                        Row(){
+
+                            Image(
+                                painter = painterResource(id = R.drawable.unabilletera),
+                                contentDescription = "Una billetera"
+                            )
+
+                            Spacer(modifier = Modifier.size(4.dp))
+
+                            Box(
+                                modifier = Modifier
+                                    .size(56.dp, 36.dp) // Set the size of the rectangle
+                                    .clip(RoundedCornerShape(100.dp)) // Set the corner radius
+                                    .background(Green900), // Set the background color
+                                contentAlignment = Alignment.Center
+                                ) {
+                                Text(
+                                    text = "\uD83D\uDE0A",
+                                    fontSize = 24.sp
+                                )
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.size(5.dp))
+                        Row(){
+                            Box(
+                                modifier = Modifier
+                                    .size(56.dp, 36.dp) // Set the size of the rectangle
+                                    .clip(RoundedCornerShape(100.dp)) // Set the corner radius
+                                    .background(Green900), // Set the background color
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = "\uD83D\uDE4C",
+                                    fontSize = 24.sp
+                                )
+                            }
+
+                            Spacer(modifier = Modifier.size(4.dp))
+
+                            Image(
+                                painter = painterResource(id = R.drawable.simpleparavos),
+                                contentDescription = "Simple Para Vos."
+                            )
+                        }
+                    }
+            }
+
+                Box(
+                    modifier = Modifier
+                        .weight(1.2f)
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
+                        .background(Gray100)
+                        .padding(horizontal = 12.dp, vertical = 24.dp)
+                ) {
+                    Column() {
+                        Text(
+                            text = "Ingresa a tu cuenta:",
+                            style = TextBaseBold,
+                            color = Black,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        Spacer(modifier = Modifier.height(24.dp))
+
+                        Input(inputName = "DNI o E-mail", inputType = "text", onTextChange = { username = it })
+                        Input(inputName = "Contraseña", inputType = "password", onTextChange = { password = it })
+
+                        Row (
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.End
+                        ) {
+                            Text(text = "Olvidé mi contraseña", color = Purple900, style = TextXS1Bold)
+                        }
+
+                        Spacer(modifier = Modifier.size(24.dp))
+
+                        CustomRadioButton(text = "Recordar datos de ingreso")
+
+                        Spacer(modifier = Modifier.size(24.dp))
+
+                        CustomButton(text = "Ingresar", onClick = {
+                            viewModel.signIn(username, password) { response ->
+                                loginResponse = response?.token ?: "Login failed"
+                                Log.d("SignIn", "Response: $loginResponse")
+                            }
+                        })
+
+                        LaunchedEffect(loginResponse) {
+                            loginResponse?.let {
+                                //navigationAction.navigateToHome()
+                            }
+                        }
+                    }
+                }
         }
     }
-
-
-
-
-        // Display wallet data
-        /*walletState?.let { wallets ->
-            LazyColumn {
-                items(wallets.size) { index ->
-                    val wallet = wallets[index]
-                    Text(
-                        text = wallet.toString(), // Adjust this line based on your Wallet data class
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(Color.Red),
-                        fontSize = 20.sp
-                    )
-                }
-            }
-        }*/
 }
