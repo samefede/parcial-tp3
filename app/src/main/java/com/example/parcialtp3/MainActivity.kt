@@ -13,6 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.example.parcialtp3.components.BottomBar
+import com.example.parcialtp3.navigation.MainNavAction
+import com.example.parcialtp3.navigation.MainRouteNav
 import com.example.parcialtp3.screens.SignIn
 import com.example.parcialtp3.ui.theme.ParcialTP3Theme
 
@@ -22,14 +26,33 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ParcialTP3Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+
+                val navController = rememberNavController()
+                val navigationActions = MainNavAction(navController)
+
+                val shouldHideBottomBar = navigationActions.hideBottomBar(
+                    navController.currentBackStackEntry?.destination?.route
+                )
+                
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    bottomBar = {
+                        if(!shouldHideBottomBar){
+                            BottomBar(navigationActions = navigationActions)
+                        }
+                    }
+                ) { innerPadding ->
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(innerPadding),
                         contentAlignment = Alignment.Center
                     ) {
-                        SignIn()
+                        MainRouteNav(
+                            navController = navController,
+                            navigationActions = navigationActions
+                        )
+
                     }
                 }
             }
