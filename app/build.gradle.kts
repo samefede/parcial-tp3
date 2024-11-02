@@ -77,6 +77,9 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
 //    implementation("androidx.graphics:graphics-shapes:1.0.0-rc01")
+    implementation("com.google.firebase:firebase-firestore:24.11.0")
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.firebase.vertexai)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

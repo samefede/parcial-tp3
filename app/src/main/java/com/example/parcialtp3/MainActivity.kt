@@ -13,6 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.parcialtp3.components.Input
+import com.example.parcialtp3.components.LinkItem
+import com.example.parcialtp3.components.MovementRow
 import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3.components.BottomBar
 import com.example.parcialtp3.navigation.MainNavAction

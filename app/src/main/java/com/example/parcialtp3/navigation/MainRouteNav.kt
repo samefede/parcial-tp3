@@ -12,12 +12,13 @@ import com.example.parcialtp3.screens.home.HomeRoute
 import com.example.parcialtp3.screens.profile.ProfileRoute
 import com.example.parcialtp3.screens.services.ServiceRoute
 import com.example.parcialtp3.screens.signIn.SignInRoute
+import com.example.parcialtp3.splash.SplashRoute
 
 @Composable
 fun MainRouteNav(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = AppDestinations.SIGN_IN_ROUTE,
+    startDestination: String = AppDestinations.SPLASH_ROUTE,
     navigationActions: MainNavAction
 ) {
     NavHost(
@@ -25,6 +26,10 @@ fun MainRouteNav(
         startDestination = startDestination,
         modifier = modifier
     ) {
+        composable(route = AppDestinations.SPLASH_ROUTE) {
+            SplashRoute(navigationAction = navigationActions)
+        }
+
         composable(route = AppDestinations.HOME_ROUTE) {
             HomeRoute(navigationAction = navigationActions)
         }

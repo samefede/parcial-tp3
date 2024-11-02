@@ -18,7 +18,7 @@ import com.example.parcialtp3.ui.theme.White2
 
 @Composable
 fun CustomButton(text: String, onClick: () -> Unit){
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column() {
         Button(
             onClick = onClick,
             modifier = Modifier
