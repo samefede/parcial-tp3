@@ -14,12 +14,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.parcialtp3.screens.signIn.SignInViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.parcialtp3.components.Input
+import com.example.parcialtp3.navigation.MainNavAction
 import com.example.parcialtp3.ui.theme.Purple900
 import com.example.parcialtp3.ui.theme.TextBaseBold
 
 @Composable
-@Preview
-fun SignIn(modifier: Modifier = Modifier) {
+//@Preview
+fun SignIn(
+    navigationAction: MainNavAction,
+    modifier: Modifier = Modifier,
+) {
     val viewModel: SignInViewModel = viewModel()
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
