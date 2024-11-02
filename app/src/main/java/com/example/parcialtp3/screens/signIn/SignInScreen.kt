@@ -39,6 +39,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.parcialtp3.R
 import com.example.parcialtp3.components.CustomButton
 import com.example.parcialtp3.components.CustomRadioButton
+import com.example.parcialtp3.components.ErrorModal
 import com.example.parcialtp3.components.Input
 import com.example.parcialtp3.components.Logo
 import com.example.parcialtp3.firestore.Wallet
@@ -102,138 +103,15 @@ fun SignIn(
 
                             Box(
                                 modifier = Modifier
-                                    .size(56.dp, 36.dp) // Set the size of the rectangle
-                                    .clip(RoundedCornerShape(100.dp)) // Set the corner radius
-                                    .background(Green900) // Set the background color
-                            )
-                        }
-
-                        Spacer(modifier = Modifier.size(5.dp))
-                        Row(){
-                            Box(
-                                modifier = Modifier
-                                    .size(56.dp, 36.dp) // Set the size of the rectangle
-                                    .clip(RoundedCornerShape(100.dp)) // Set the corner radius
-                                    .background(Green900) // Set the background color
-                            )
-
-                            Spacer(modifier = Modifier.size(4.dp))
-
-                            Image(
-                                painter = painterResource(id = R.drawable.simpleparavos),
-                                contentDescription = "Simple Para Vos."
-                            )
-                        }
-                    }
-                }
-
-                Box(
-                    modifier = Modifier
-                        .weight(1.2f)
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
-                        .background(Gray100)
-                        .padding(horizontal = 12.dp, vertical = 24.dp)
-                ) {
-                    Column() {
-                        Text(
-                            text = "Ingresa a tu cuenta:",
-                            style = TextBaseBold,
-                            color = Black,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-
-                        Spacer(modifier = Modifier.height(24.dp))
-
-                        Input(inputName = "DNI o E-mail", inputType = "text", onTextChange = { username = it })
-                        Input(inputName = "Contraseña", inputType = "password", onTextChange = { password = it })
-
-                        Row (
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.End
-                        ) {
-                            Text(text = "Olvidé mi contraseña", color = Purple900, style = TextXS1Bold)
-                        }
-
-                        Spacer(modifier = Modifier.size(24.dp))
-
-                        CustomRadioButton(text = "Recordar datos de ingreso")
-
-                        Spacer(modifier = Modifier.size(24.dp))
-
-                        CustomButton(text = "Ingresar", onClick = {
-                            viewModel.signIn(username, password) { response ->
-                                loginResponse = response?.token ?: "Login failed"
-                                Log.d("SignIn", "Response: $loginResponse")
-                            }
-                        })
-
-                        LaunchedEffect(loginResponse) {
-                            loginResponse?.let {
-                                navigationAction.navigateToHome()
-                            }
-                        }
-                    }
-                }
-            }
-    }
-}
-
-@Composable
-@Preview
-fun SignInContent() {
-    val viewModel: SignInViewModel = viewModel()
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var loginResponse by remember { mutableStateOf<String?>(null) }
-    var isVisible by remember { mutableStateOf(true) }
-
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(Green800)
-    ){
-
-        Column(modifier = Modifier.fillMaxHeight()) {
-                Box(
-                    modifier = Modifier
-                        .weight(0.8f)
-                        .fillMaxWidth(),
-                    contentAlignment = Alignment.Center
-                ){
-                    Column (
-                        modifier = Modifier
-                            .height(153.5.dp)
-                            .width(288.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally)
-                    {
-                        Logo()
-                        //40.dp o 25.dp
-                        Spacer(modifier = Modifier.size(25.dp))
-
-                        Image(
-                            painter = painterResource(id = R.drawable.dialogtriangle),
-                            contentDescription = "Una billetera"
-                        )
-
-                        Row(){
-
-                            Image(
-                                painter = painterResource(id = R.drawable.unabilletera),
-                                contentDescription = "Una billetera"
-                            )
-
-                            Spacer(modifier = Modifier.size(4.dp))
-
-                            Box(
-                                modifier = Modifier
-                                    .size(56.dp, 36.dp) // Set the size of the rectangle
-                                    .clip(RoundedCornerShape(100.dp)) // Set the corner radius
-                                    .background(Green900), // Set the background color
+                                    .size(56.dp, 36.dp)
+                                    .clip(RoundedCornerShape(100.dp))
+                                    .background(Green900),
                                 contentAlignment = Alignment.Center
-                                ) {
-                                Text(
-                                    text = "\uD83D\uDE0A",
-                                    fontSize = 24.sp
+                            ){
+                                Image(
+                                    modifier = Modifier.size(24.dp),
+                                    painter = painterResource(id = R.drawable.smiling_face_with_smiling_eyes),
+                                    contentDescription = "Simple Para Vos."
                                 )
                             }
                         }
@@ -242,14 +120,15 @@ fun SignInContent() {
                         Row(){
                             Box(
                                 modifier = Modifier
-                                    .size(56.dp, 36.dp) // Set the size of the rectangle
-                                    .clip(RoundedCornerShape(100.dp)) // Set the corner radius
-                                    .background(Green900), // Set the background color
+                                    .size(56.dp, 36.dp)
+                                    .clip(RoundedCornerShape(100.dp))
+                                    .background(Green900),
                                 contentAlignment = Alignment.Center
                             ) {
-                                Text(
-                                    text = "\uD83D\uDE4C",
-                                    fontSize = 24.sp
+                                Image(
+                                    modifier = Modifier.size(24.dp),
+                                    painter = painterResource(id = R.drawable.raising_hands),
+                                    contentDescription = "Simple Para Vos."
                                 )
                             }
 
@@ -261,7 +140,7 @@ fun SignInContent() {
                             )
                         }
                     }
-            }
+                }
 
                 Box(
                     modifier = Modifier
@@ -297,20 +176,32 @@ fun SignInContent() {
 
                         Spacer(modifier = Modifier.size(24.dp))
 
-                        CustomButton(text = "Ingresar", onClick = {
-                            viewModel.signIn(username, password) { response ->
-                                loginResponse = response?.token ?: "Login failed"
-                                Log.d("SignIn", "Response: $loginResponse")
-                            }
-                        })
-
+                        Row(
+                            modifier = Modifier.fillMaxSize(),
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.Bottom
+                        ) {
+                            CustomButton(text = "Ingresar", onClick = {
+                                viewModel.signIn(username, password) { response ->
+                                    loginResponse = response?.token ?: "Error en Login"
+                                    Log.d("SignIn", "Response: $loginResponse")
+                                }
+                            })
+                        }
                         LaunchedEffect(loginResponse) {
                             loginResponse?.let {
-                                //navigationAction.navigateToHome()
+                                if (it != "Error en Login") {
+                                    navigationAction.navigateToHome()
+                                }
                             }
                         }
                     }
                 }
+            }
+
+        ErrorModal(isVisible = loginResponse == "Error en Login", loginResponse?: "") {
+            loginResponse = null
         }
     }
 }
+
