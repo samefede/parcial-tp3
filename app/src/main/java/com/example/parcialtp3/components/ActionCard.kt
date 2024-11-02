@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.Dp
 import androidx.compose.foundation.shape.RoundedCornerShape
 import com.example.parcialtp3.ui.theme.Black
+import com.example.parcialtp3.ui.theme.Elevation
 import com.example.parcialtp3.ui.theme.TextXS2Bold
 
 @Composable
@@ -30,20 +31,21 @@ fun ActionCard(
     val shape = RoundedCornerShape(
         topStart = topLeftCornerRadius,
         topEnd = topRightCornerRadius,
-        bottomStart = bottomRightCornerRadius,
-        bottomEnd = bottomLeftCornerRadius
+        bottomStart = bottomLeftCornerRadius,
+        bottomEnd = bottomRightCornerRadius
     )
 
     Card(
         shape = shape,
         colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(4.dp),
+        elevation = CardDefaults.cardElevation(Elevation),
         modifier = modifier
             .size(width = 112.dp, height = 96.dp)
             .border(
-                width = 1.dp,
+                width = 0.1.dp,
                 color = Color(0xFFD1D1D7),
-                shape = shape
+                shape = shape,
+
             )
     ) {
         Column(
@@ -56,7 +58,7 @@ fun ActionCard(
             Image(
                 painter = painterResource(id = iconResId),
                 contentDescription = null,
-                modifier = Modifier.size(48.dp)
+                modifier = Modifier.size(24.dp).width(22.dp).height(20.dp)
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(

@@ -53,7 +53,7 @@ fun MovementRow(date: String, description: String, transactionId: String, amount
                 text = date,
                 style = TextXS1Regular,
                 color = Black,
-                modifier = Modifier.width(72.dp) //TODO: REVISAR DP
+                modifier = Modifier.width(78.dp) //TODO: REVISAR DP
             )
 
             // Descripción y Autorización
