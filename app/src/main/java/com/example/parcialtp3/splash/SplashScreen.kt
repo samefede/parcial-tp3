@@ -17,6 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.parcialtp3.R
+import com.example.parcialtp3.components.Logo
 import com.example.parcialtp3.ui.theme.Green800
 
 @Composable
@@ -28,20 +29,6 @@ fun SplashScreen() {
             .background(Green800),
         contentAlignment = Alignment.Center
     ) {
-        Row(
-            modifier = Modifier.width(257.dp)
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.waynimovil),
-                contentDescription = "Wayni Movil"
-            )
-            Spacer(modifier = Modifier.weight(1f))
-            Image(
-                painter = painterResource(id = R.drawable.union),
-                contentDescription = "Union",
-                modifier = Modifier.align(Alignment.Bottom)
-
-            )
-        }
+        Logo()
     }
 }

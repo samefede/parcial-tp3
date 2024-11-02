@@ -112,6 +112,7 @@ fun Input(inputName: String, inputType: String, onTextChange: (String) -> Unit) 
                         BasicTextField(
                             value = text,
                             textStyle = TextBaseRegular,
+                            maxLines = 1,
                             onValueChange = {
                                 if (validateInput(it)) {
                                     text = it

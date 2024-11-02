@@ -13,8 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.parcialtp3.components.Input
+import com.example.parcialtp3.components.LinkItem
+import com.example.parcialtp3.components.MovementRow
 import androidx.compose.foundation.background
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import com.example.parcialtp3.screens.SignIn
 import com.example.parcialtp3.ui.theme.ParcialTP3Theme
 
@@ -28,12 +32,14 @@ class MainActivity : ComponentActivity() {
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(innerPadding)
-                            .background(Color.Gray),
+                            .padding(horizontal = 12.dp, vertical = 8.dp),
                         contentAlignment = Alignment.Center
-
                     ) {
-
+                        innerPadding
+                        //LinkItem("Quiero mi tarjeta física", "", isFirst = true, isLast = false)
+                        //MovementRow(date = "19-03-20", description = "Transferencia", transactionId = "394991", type = "credit")
+                        //Input(inputName = "DNI o E-mail", inputType = "text", icon = 0, onTextChange = {})
+                        //Input(inputName = "Contraseña", inputType = "password", onTextChange = {})
                         SignIn()
                     }
                 }
