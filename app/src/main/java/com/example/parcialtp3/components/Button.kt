@@ -13,11 +13,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.parcialtp3.ui.theme.Purple900
 import com.example.parcialtp3.ui.theme.Shapes
+import com.example.parcialtp3.ui.theme.TextBaseBold
 import com.example.parcialtp3.ui.theme.White2
 
 @Composable
 fun CustomButton(text: String, onClick: () -> Unit){
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column() {
         Button(
             onClick = onClick,
             modifier = Modifier
@@ -31,7 +32,10 @@ fun CustomButton(text: String, onClick: () -> Unit){
                     containerColor = Purple900,
                 )
         ) {
-            Text(text = text.replaceFirstChar { it.uppercase() })
+            Text(
+                text = text.replaceFirstChar { it.uppercase() },
+                style = TextBaseBold
+            )
         }
     }
 }

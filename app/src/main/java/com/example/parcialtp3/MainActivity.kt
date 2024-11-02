@@ -13,6 +13,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.parcialtp3.components.Input
+import com.example.parcialtp3.components.LinkItem
+import com.example.parcialtp3.components.MovementRow
+import androidx.navigation.compose.rememberNavController
+import com.example.parcialtp3.components.BottomBar
+import com.example.parcialtp3.navigation.MainNavAction
+import com.example.parcialtp3.navigation.MainRouteNav
+import androidx.compose.foundation.background
+import androidx.compose.ui.graphics.Color
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.parcialtp3.screens.SignIn
 import com.example.parcialtp3.ui.theme.ParcialTP3Theme
 
@@ -22,14 +32,35 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ParcialTP3Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+
+                val navController = rememberNavController()
+                val navigationActions = MainNavAction(navController)
+
+                val shouldHideBottomBar = navigationActions.hideBottomBar(
+                    navController.currentBackStackEntry?.destination?.route
+                )
+
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+
+                    bottomBar = {
+                        val currentLocation = navController.currentBackStackEntryAsState().value?.destination?.route
+                        if (!navigationActions.hideBottomBar(currentLocation)) {
+                            BottomBar(navigationActions = navigationActions)
+                        }
+                    },
+                ) { innerPadding ->
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(innerPadding),
                         contentAlignment = Alignment.Center
                     ) {
-                        SignIn()
+                        MainRouteNav(
+                            navController = navController,
+                            navigationActions = navigationActions
+                        )
+
                     }
                 }
             }
