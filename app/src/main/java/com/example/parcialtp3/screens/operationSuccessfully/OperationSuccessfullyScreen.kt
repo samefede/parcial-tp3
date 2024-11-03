@@ -18,6 +18,7 @@ import com.example.partialtp3.components.SuccessMessage
 fun OperationSuccessfullyScreen(
     navigationAction: MainNavAction
 ) {
+
     Box(
         modifier = Modifier
             .fillMaxSize()
