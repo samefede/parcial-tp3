@@ -26,17 +26,21 @@ import com.example.parcialtp3.ui.theme.TextXS2Bold
 fun ServiceCard(iconResId: Int, serviceText: String) {
     Box(
         modifier = Modifier
+            .padding(top = 4.dp)
             .fillMaxWidth()
-            .widthIn(min = 160.dp).height(138.dp)
+            .widthIn(min = 160.dp)
+            .height(138.dp)
             .shadow(elevation = 6.dp, shape = RoundedCornerShape(8.dp))
             .background(color = Color.White, shape = RoundedCornerShape(8.dp))
-            .border(BorderStroke(1.dp, Gray500), shape = RoundedCornerShape(8.dp)),
+            .border(BorderStroke(1.dp, Gray500), shape = RoundedCornerShape(8.dp))
+            .clickable { },
         contentAlignment = Alignment.Center
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .widthIn(min = 90.dp).height(138.dp),
+                .widthIn(min = 90.dp)
+                .height(138.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {

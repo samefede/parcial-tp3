@@ -80,13 +80,12 @@ fun SignIn(
                 ){
                     Column (
                         modifier = Modifier
-                            .height(153.5.dp)
+                            .height(180.5.dp) //153.5
                             .width(288.dp),
                         horizontalAlignment = Alignment.CenterHorizontally)
                     {
                         Logo()
                         //40.dp o 25.dp
-                        Spacer(modifier = Modifier.size(25.dp))
 
 
 
@@ -105,32 +104,34 @@ fun SignIn(
                                     )
                                 }
                                 Row(
-
+                                    modifier = Modifier.fillMaxWidth(),
                                 ) {
                                     Image(
                                         painter = painterResource(id = R.drawable.unabilletera),
                                         contentDescription = "Una billetera"
                                     )
+
+                                    Spacer(modifier = Modifier.size(4.dp))
+
+                                    Box(
+                                        modifier = Modifier
+                                            .size(56.dp, 36.dp)
+                                            .clip(RoundedCornerShape(100.dp))
+                                            .background(Green900),
+                                        contentAlignment = Alignment.Center
+                                    ){
+                                        Image(
+                                            modifier = Modifier.size(24.dp),
+                                            painter = painterResource(id = R.drawable.smiling_face_with_smiling_eyes),
+                                            contentDescription = "Smiling face."
+                                        )
+                                    }
                                 }
 
                             }
 
 
-                            Spacer(modifier = Modifier.size(4.dp))
 
-                            Box(
-                                modifier = Modifier
-                                    .size(56.dp, 36.dp)
-                                    .clip(RoundedCornerShape(100.dp))
-                                    .background(Green900),
-                                contentAlignment = Alignment.Center
-                            ){
-                                Image(
-                                    modifier = Modifier.size(24.dp),
-                                    painter = painterResource(id = R.drawable.smiling_face_with_smiling_eyes),
-                                    contentDescription = "Simple Para Vos."
-                                )
-                            }
                         }
 
                         Spacer(modifier = Modifier.size(5.dp))
@@ -147,7 +148,7 @@ fun SignIn(
                                 Image(
                                     modifier = Modifier.size(24.dp),
                                     painter = painterResource(id = R.drawable.raising_hands),
-                                    contentDescription = "Simple Para Vos."
+                                    contentDescription = "Raising hands."
                                 )
                             }
 

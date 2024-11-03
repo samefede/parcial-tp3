@@ -25,10 +25,10 @@ fun TopBar(topBarColor: Color, title: String, titleStyle: TextStyle, titleColor:
     val align = if (description.isNotEmpty()) Alignment.TopStart else Alignment.Center
 
     Box(modifier = Modifier
-        .padding(vertical = 30.dp, horizontal = 25.dp)
-        .fillMaxWidth()
+        .background(topBarColor)
+        .padding(top = 30.dp, start = 25.dp, end = 25.dp)
         .height(50.dp)
-        .background(topBarColor),
+        .fillMaxWidth(),
         contentAlignment = align
     ){
         Column {
@@ -46,4 +46,16 @@ fun TopBar(topBarColor: Color, title: String, titleStyle: TextStyle, titleColor:
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun PreviewTopBar(){
+    TopBar(
+        topBarColor = Color.Red,
+        title = "TARJETA VIRTUAL",
+        titleStyle = TextXL2Bold,
+        titleColor = Black,
+        description = "4957 1234 12345 5824"
+    )
 }

@@ -1,5 +1,6 @@
 package com.example.parcialtp3.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,13 +12,21 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.Elevation
+import com.example.parcialtp3.ui.theme.Gray500
+import com.example.parcialtp3.ui.theme.Gray900
 import com.example.parcialtp3.ui.theme.Purple900
 import com.example.parcialtp3.ui.theme.Shapes
+import com.example.parcialtp3.ui.theme.TextBaseBold
+import com.example.parcialtp3.ui.theme.TextBaseRegular
 import com.example.parcialtp3.ui.theme.TextXS1Bold
+import com.example.parcialtp3.ui.theme.TextXS1Regular
 import com.example.parcialtp3.ui.theme.White2
 
 @Composable
@@ -25,7 +34,8 @@ fun TotalAmountCard(amount: Double, cvu: String) {
     Card(
         modifier = Modifier,
         elevation = CardDefaults.cardElevation(Elevation),
-        shape = Shapes.medium
+        shape = Shapes.medium,
+        border = BorderStroke(1.dp, Gray500)
     ) {
         Column(
             modifier = Modifier
@@ -44,12 +54,22 @@ fun TotalAmountCard(amount: Double, cvu: String) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(12.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                TextValue(
-                    label = "CVU: ",
-                    value = "0000654326538129540653"
-                )
+                Row() {
+                    Text(
+                        text = "CVU: ",
+                        color = Gray900,
+                        style = TextXS1Regular,
+                    )
+                    Text(
+                        text = "0000654326538129540653",
+                        color = Black,
+                        style = TextXS1Bold,
+                        textAlign = TextAlign.Center,
+                    )
+                }
 
                 Text(
                     text = "Copiar",
