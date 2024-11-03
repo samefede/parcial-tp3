@@ -43,7 +43,7 @@ fun BottomBar(
         containerColor = Color.White,
         modifier = Modifier
             .shadow(8.dp) //fijarse
-            .height(110.dp)
+            .height(80.dp)
     ) {
         navItems.forEachIndexed { index, item ->
             NavigationBarItem(

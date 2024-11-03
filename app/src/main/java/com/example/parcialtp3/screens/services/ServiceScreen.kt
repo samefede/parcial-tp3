@@ -38,17 +38,19 @@ fun ServiceScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Gray100)
-            .padding(horizontal = 12.dp)
+            .padding(horizontal = 12.dp, vertical = 16.dp)
     ) {
-
         LazyVerticalGrid(
+            modifier = Modifier.fillMaxSize()
+                .padding(16.dp),
             columns = GridCells.Fixed(2),
-            modifier = Modifier.fillMaxSize(),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalArrangement = Arrangement.spacedBy(15.dp)
         ) {
             item {
-                ServiceCard(iconResId = R.drawable.recargasube, serviceText = "RECARGA SUBE" )
+                ServiceCard(
+                    iconResId = R.drawable.recargasube,
+                    serviceText = "RECARGA SUBE" )
             }
             item {
                 ServiceCard(

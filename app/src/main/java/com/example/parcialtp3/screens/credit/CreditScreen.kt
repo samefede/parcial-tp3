@@ -40,7 +40,7 @@ fun CreditScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Gray100)
-            .padding(12.dp)
+            .padding(horizontal = 12.dp)
     ) {
         item {
             Text(
@@ -105,6 +105,7 @@ fun CreditScreen(
                 LinkItem(buttonName = "Quiero mi tarjeta fisica", isFirst = true)
                 LinkItem(buttonName = "Ya tengo mi tarjeta fisica", description="Activa tu tarjeta para comenzar a usarla", isLast = true)
             }
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }

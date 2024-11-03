@@ -50,7 +50,7 @@ fun HomeScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Gray100)
-            .padding(12.dp)
+            .padding(end = 12.dp, top = 12.dp, start = 12.dp)
     ) {
         item {
             Card("4957 1234 12345 5824")

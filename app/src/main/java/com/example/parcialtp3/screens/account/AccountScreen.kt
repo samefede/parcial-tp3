@@ -34,6 +34,7 @@ import com.example.parcialtp3.components.MovementRow
 import com.example.parcialtp3.firestore.Transaction
 import com.example.parcialtp3.firestore.Transactions
 import com.example.parcialtp3.ui.theme.Black
+import com.example.parcialtp3.ui.theme.Gray100
 import com.example.parcialtp3.ui.theme.TextXS1Bold
 import com.example.parcialtp3.ui.theme.White
 
@@ -58,6 +59,9 @@ fun AccountScreen(
     println("walletState: $walletState")
     println("Bank Account Transactions: $bankAccountTransactions")
     Column(
+        modifier = Modifier
+            .background(Gray100)
+            .padding(top = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column (
