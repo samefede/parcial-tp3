@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -52,6 +54,7 @@ fun LinkItem(buttonName: String, description: String = "", isFirst: Boolean = fa
 
     var isClicked by remember { mutableStateOf(false) }
 
+    var isSwitched by remember { mutableStateOf(false) }
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -60,7 +63,7 @@ fun LinkItem(buttonName: String, description: String = "", isFirst: Boolean = fa
             .background(White2)
             .border(1.dp, Gray500, shape)
             .clickable { isClicked = !isClicked }
-            .padding(horizontal = 12.dp, vertical = if(descriptionEmpty) 8.dp else 16.dp),
+            .padding(horizontal = 12.dp, vertical = if (descriptionEmpty) 8.dp else 16.dp),
         contentAlignment = Alignment.Center
     ) {
         Row (
@@ -91,9 +94,7 @@ fun LinkItem(buttonName: String, description: String = "", isFirst: Boolean = fa
                     contentDescription = "Boton"
                 )
             }
-
         }
-
     }
 }
 

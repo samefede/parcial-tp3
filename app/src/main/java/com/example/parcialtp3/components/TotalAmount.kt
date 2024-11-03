@@ -8,13 +8,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.TextXL4
 import com.example.parcialtp3.ui.theme.TextXL5
 import com.example.parcialtp3.ui.theme.TextXS2Bold
-import com.example.parcialtp3.ui.theme.White2
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -28,7 +28,7 @@ fun TotalAmount(amount: Double, textSize: TextSize) {
         modifier = Modifier
             .fillMaxWidth()
             .height(66.dp)
-            .background(White2),
+            .background(Color.Transparent),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(

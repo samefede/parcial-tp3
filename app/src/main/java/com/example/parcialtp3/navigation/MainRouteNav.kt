@@ -1,14 +1,24 @@
 package com.example.parcialtp3.navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3.screens.account.AccountRoute
+import com.example.parcialtp3.screens.cardCharge.CardChargeRoute
 import com.example.parcialtp3.screens.credit.CreditRoute
 import com.example.parcialtp3.screens.home.HomeRoute
+import com.example.parcialtp3.screens.operationSuccessfully.OperationSuccessfullyRoute
 import com.example.parcialtp3.screens.profile.ProfileRoute
 import com.example.parcialtp3.screens.services.ServiceRoute
 import com.example.parcialtp3.screens.signIn.SignInRoute
@@ -21,6 +31,21 @@ fun MainRouteNav(
     startDestination: String = AppDestinations.SPLASH_ROUTE,
     navigationActions: MainNavAction
 ) {
+
+    val enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition = {
+        slideInHorizontally(
+            initialOffsetX = { it },
+            animationSpec = tween(durationMillis = 250, easing = LinearOutSlowInEasing)
+        )
+    }
+
+    val exitTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition = {
+        slideOutHorizontally(
+            targetOffsetX = { it },
+            animationSpec = tween(durationMillis = 200, easing = LinearOutSlowInEasing)
+        )
+    }
+
     NavHost(
         navController = navController,
         startDestination = startDestination,
@@ -42,7 +67,11 @@ fun MainRouteNav(
             CreditRoute(navigationAction = navigationActions)
         }
 
-        composable(route = AppDestinations.PROFILE_ROUTE){
+        composable(
+            route = AppDestinations.PROFILE_ROUTE,
+            enterTransition = enterTransition,
+            exitTransition = exitTransition,
+        ){
             ProfileRoute(navigationAction = navigationActions)
         }
 
@@ -52,6 +81,14 @@ fun MainRouteNav(
 
         composable(route = AppDestinations.SIGN_IN_ROUTE){
             SignInRoute(navigationAction = navigationActions)
+        }
+
+        composable(route = AppDestinations.CARD_CHARGE_ROUTE){
+            CardChargeRoute(navigationAction = navigationActions)
+        }
+
+        composable(route = AppDestinations.OPERATION_SUCCESSFULLY_ROUTE){
+            OperationSuccessfullyRoute(navigationAction = navigationActions)
         }
     }
 }

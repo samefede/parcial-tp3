@@ -3,6 +3,7 @@ package com.example.parcialtp3.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,6 +17,7 @@ import com.example.parcialtp3.R
 fun Logo() {
     Row(
         modifier = Modifier.width(257.dp)
+            .padding(bottom = 25.dp),
     ) {
         Image(
             painter = painterResource(id = R.drawable.waynimovil),
