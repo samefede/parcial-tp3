@@ -1,9 +1,6 @@
 package com.example.parcialtp3.screens
 
 import android.util.Log
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -19,23 +16,14 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.parcialtp3.screens.signIn.SignInViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.parcialtp3.R
@@ -44,8 +32,6 @@ import com.example.parcialtp3.components.CustomRadioButton
 import com.example.parcialtp3.components.ErrorModal
 import com.example.parcialtp3.components.Input
 import com.example.parcialtp3.components.Logo
-import com.example.parcialtp3.firestore.Wallet
-import com.example.parcialtp3.firestore.WalletViewModel
 import com.example.parcialtp3.navigation.MainNavAction
 import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.Gray100
@@ -166,7 +152,6 @@ fun SignIn(
                     modifier = Modifier
                         .weight(1.2f)
                         .fillMaxWidth()
-                        .shadow(20.dp, shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp), clip = false)
                         .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
                         .background(Gray100)
                         .padding(horizontal = 12.dp, vertical = 24.dp)

@@ -81,6 +81,8 @@ dependencies {
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.firebase.vertexai)
 
+    implementation ("androidx.compose.animation:animation-core:1.0.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
