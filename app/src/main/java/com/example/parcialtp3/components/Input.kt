@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -70,12 +72,12 @@ fun Input(inputName: String, inputType: String, onTextChange: (String) -> Unit) 
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(80.dp),
+            .height(85.dp),
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(54.dp)
+                .height(64.dp)
                 .clip(shape)
                 .background(White2)
                 .border(1.dp, if (error) Red900 else if (isClickedInput) Purple900 else Gray500, shape)
@@ -98,7 +100,7 @@ fun Input(inputName: String, inputType: String, onTextChange: (String) -> Unit) 
                     )
                 } else {
                     Column(
-                        modifier = Modifier.fillMaxHeight(),
+                        modifier = Modifier.fillMaxWidth(),
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.Start,
                     ) {
@@ -106,6 +108,10 @@ fun Input(inputName: String, inputType: String, onTextChange: (String) -> Unit) 
                             text = inputName,
                             style = TextXS1Regular,
                             color = Gray900,
+                            modifier = Modifier
+                                .padding(start = 1.dp)
+                                .offset(y = if (isClickedInput || text.isNotEmpty()) (-5).dp else 0.dp)
+                                .background(White2)
                         )
                         BasicTextField(
                             value = text,
@@ -124,9 +130,12 @@ fun Input(inputName: String, inputType: String, onTextChange: (String) -> Unit) 
                                 }
                             },
                             visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                            modifier = Modifier.fillMaxWidth()
                         )
                     }
                 }
+
+                Spacer(modifier = Modifier.height(24.dp))
 
                 Row() {
                     if (error) {
@@ -169,7 +178,6 @@ fun Input(inputName: String, inputType: String, onTextChange: (String) -> Unit) 
 fun InputPreview(){
     var savedText by remember { mutableStateOf("") }
 
-    Input("Contraseña", "text", onTextChange = { newText ->
-        savedText = newText
-    })
+    Input(inputName = "DNI o E-mail", inputType = "text", onTextChange = { newText ->
+        savedText = newText})
 }
