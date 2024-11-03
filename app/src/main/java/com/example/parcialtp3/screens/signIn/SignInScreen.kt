@@ -30,6 +30,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -165,6 +166,7 @@ fun SignIn(
                     modifier = Modifier
                         .weight(1.2f)
                         .fillMaxWidth()
+                        .shadow(20.dp, shape = RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp), clip = false)
                         .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
                         .background(Gray100)
                         .padding(horizontal = 12.dp, vertical = 24.dp)
