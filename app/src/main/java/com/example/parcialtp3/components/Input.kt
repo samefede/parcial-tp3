@@ -13,11 +13,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,7 +24,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -38,7 +35,6 @@ import com.example.parcialtp3.ui.theme.Gray500
 import com.example.parcialtp3.ui.theme.Gray900
 import com.example.parcialtp3.ui.theme.Purple900
 import com.example.parcialtp3.ui.theme.Red900
-import com.example.parcialtp3.ui.theme.TextBaseBold
 import com.example.parcialtp3.ui.theme.TextBaseRegular
 import com.example.parcialtp3.ui.theme.TextXS1Bold
 import com.example.parcialtp3.ui.theme.TextXS1Regular
@@ -51,7 +47,7 @@ fun Input(inputName: String, inputType: String, onTextChange: (String) -> Unit) 
     var isClickedInput by remember { mutableStateOf(false) }
     val shape = RoundedCornerShape(3.dp)
     var error by remember { mutableStateOf(false) }
-    var errorMessage by remember { mutableStateOf("hola") }
+    var errorMessage by remember { mutableStateOf("") }
 
     fun validateInput(input: String): Boolean {
         return when (inputType) {
@@ -83,7 +79,9 @@ fun Input(inputName: String, inputType: String, onTextChange: (String) -> Unit) 
                 .clip(shape)
                 .background(White2)
                 .border(1.dp, if (error) Red900 else if (isClickedInput) Purple900 else Gray500, shape)
-                .clickable { isClickedInput = !isClickedInput }
+                .clickable {
+                    if (!isClickedInput || text.isNotEmpty()) isClickedInput = true
+                }
                 .padding(horizontal = 12.dp, vertical = 8.dp),
             contentAlignment = Alignment.Center
         ) {
