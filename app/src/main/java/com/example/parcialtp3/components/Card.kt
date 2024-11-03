@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -47,9 +48,10 @@ fun Card(cardNumber: String){
     ) {
         Box(
             modifier = Modifier
-//            .fillMaxWidth()
-                .width(336.dp)
-                .height(212.dp)
+                .fillMaxWidth()
+                .aspectRatio(336f / 212f)
+//                .width(336.dp)
+//                .height(212.dp)
                 .background(Green800, shape = RoundedCornerShape(12.dp))
                 .clip(RoundedCornerShape(12.dp))
         ){
