@@ -17,7 +17,7 @@ fun OperationSuccessfully() {
         modifier = Modifier
             .fillMaxSize()
             .background(Gray100)
-            .padding(horizontal = 12.dp)
+            .padding(start = 12.dp, end = 12.dp, top = 0.dp, bottom = 16.dp)
     ) {
 
         Column(
