@@ -60,8 +60,7 @@ fun AccountScreen(
     println("Bank Account Transactions: $bankAccountTransactions")
     Column(
         modifier = Modifier
-            .background(Gray100)
-            .padding(top = 16.dp),
+            .background(Gray100),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column (
