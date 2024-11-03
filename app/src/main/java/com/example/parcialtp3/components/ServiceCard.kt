@@ -4,6 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -25,7 +26,8 @@ import com.example.parcialtp3.ui.theme.TextXS2Bold
 fun ServiceCard(iconResId: Int, serviceText: String) {
     Box(
         modifier = Modifier
-            .size(width = 160.dp, height = 138.dp)
+            .fillMaxWidth()
+            .widthIn(min = 160.dp).height(138.dp)
             .shadow(elevation = 6.dp, shape = RoundedCornerShape(8.dp))
             .background(color = Color.White, shape = RoundedCornerShape(8.dp))
             .border(BorderStroke(1.dp, Gray500), shape = RoundedCornerShape(8.dp)),
@@ -33,7 +35,8 @@ fun ServiceCard(iconResId: Int, serviceText: String) {
     ) {
         Column(
             modifier = Modifier
-                .size(width = 116.dp, height = 94.dp),
+                .fillMaxWidth()
+                .widthIn(min = 90.dp).height(138.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -59,7 +62,6 @@ fun ServiceCard(iconResId: Int, serviceText: String) {
                 style = TextXS2Bold,
                 color = Black,
                 textAlign = TextAlign.Center,
-                maxLines = 1
             )
         }
     }
@@ -68,5 +70,8 @@ fun ServiceCard(iconResId: Int, serviceText: String) {
 @Composable
 @Preview
 fun PreviewServiceCard() {
-    ServiceCard(iconResId = R.drawable.pagoservicio, serviceText = "PAGO DE SERVICIOS")
+    ServiceCard(
+        iconResId = R.drawable.pagoservicio,
+        serviceText = "PAGO DE SERVICIOS"
+    )
 }

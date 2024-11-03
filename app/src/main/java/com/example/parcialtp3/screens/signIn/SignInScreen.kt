@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -60,8 +61,8 @@ fun SignIn(
     modifier: Modifier = Modifier,
 ) {
     val viewModel: SignInViewModel = viewModel()
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var username by remember { mutableStateOf("mor_2314") }
+    var password by remember { mutableStateOf("83r5^_") }
     var loginResponse by remember { mutableStateOf<String?>(null) }
 
     Box(modifier = Modifier
@@ -87,17 +88,33 @@ fun SignIn(
                         //40.dp o 25.dp
                         Spacer(modifier = Modifier.size(25.dp))
 
-                        Image(
-                            painter = painterResource(id = R.drawable.dialogtriangle),
-                            contentDescription = "Una billetera"
-                        )
 
-                        Row(){
 
-                            Image(
-                                painter = painterResource(id = R.drawable.unabilletera),
-                                contentDescription = "Una billetera"
-                            )
+                        Row(modifier = Modifier
+                            .fillMaxWidth()
+                            .height(52.dp),
+                            horizontalArrangement = Arrangement.Start,
+                            verticalAlignment = Alignment.Bottom
+                        ) {
+                            Column (modifier = Modifier.fillMaxHeight()){
+                                Row() {
+                                    Image(
+                                        modifier = Modifier.offset(y = (4).dp, x = (34).dp),
+                                        painter = painterResource(id = R.drawable.dialogtriangle),
+                                        contentDescription = "Dialog triangle"
+                                    )
+                                }
+                                Row(
+
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.unabilletera),
+                                        contentDescription = "Una billetera"
+                                    )
+                                }
+
+                            }
+
 
                             Spacer(modifier = Modifier.size(4.dp))
 
@@ -117,7 +134,9 @@ fun SignIn(
                         }
 
                         Spacer(modifier = Modifier.size(5.dp))
-                        Row(){
+                        Row(modifier = Modifier
+                            .fillMaxWidth()
+                            .height(52.dp), horizontalArrangement = Arrangement.Start){
                             Box(
                                 modifier = Modifier
                                     .size(56.dp, 36.dp)

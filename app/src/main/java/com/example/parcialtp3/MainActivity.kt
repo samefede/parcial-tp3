@@ -22,9 +22,13 @@ import com.example.parcialtp3.navigation.MainNavAction
 import com.example.parcialtp3.navigation.MainRouteNav
 import androidx.compose.foundation.background
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.parcialtp3.components.TopBar
 import com.example.parcialtp3.screens.SignIn
+import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.ParcialTP3Theme
+import com.example.parcialtp3.ui.theme.TextXL1Bold
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,9 +44,24 @@ class MainActivity : ComponentActivity() {
                     navController.currentBackStackEntry?.destination?.route
                 )
 
+                val shouldHideTopBar = navigationActions.hideTopBar(
+                    navController.currentBackStackEntry?.destination?.route
+                )
+
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
-
+                    topBar = {
+                        val currentLocation = navController.currentBackStackEntryAsState().value?.destination?.route
+                        if (!navigationActions.hideBottomBar(currentLocation)) {
+                            TopBar(
+                                topBarColor = navigationActions.getColorTopBar(currentLocation),
+                                title = navigationActions.getTextTopBar(currentLocation),
+                                titleStyle = navigationActions.getTitleStyleTopBar(currentLocation),
+                                titleColor = navigationActions.getTitleColorTopBar(currentLocation),
+                                description = navigationActions.getDescriptionTopBar(currentLocation)
+                            )
+                        }
+                    },
                     bottomBar = {
                         val currentLocation = navController.currentBackStackEntryAsState().value?.destination?.route
                         if (!navigationActions.hideBottomBar(currentLocation)) {
