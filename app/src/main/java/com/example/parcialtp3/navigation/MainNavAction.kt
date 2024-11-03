@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.Gray100
 import com.example.parcialtp3.ui.theme.TextXL1Bold
+import com.example.parcialtp3.ui.theme.White
 
 object AppDestinations{
     const val SIGN_IN_ROUTE = "signin"
@@ -17,11 +18,15 @@ object AppDestinations{
     const val PROFILE_ROUTE = "profile"
     const val SERVICE_ROUTE = "services"
     const val SPLASH_ROUTE = "splash"
+    const val CARD_CHARGE_ROUTE = "cardCharge"
+    const val OPERATION_SUCCESSFULLY_ROUTE = "operationSuccessfully"
 }
 
 val hideBottomBar= listOf(
     AppDestinations.SIGN_IN_ROUTE,
     AppDestinations.SPLASH_ROUTE,
+    AppDestinations.CARD_CHARGE_ROUTE,
+    AppDestinations.OPERATION_SUCCESSFULLY_ROUTE
 )
 
 val hideTopBar= listOf(
@@ -56,6 +61,12 @@ class MainNavAction(
             launchSingleTop = true
         }
     }
+    val navigateToCardCharge: () -> Unit = {
+        navController.navigate(AppDestinations.CARD_CHARGE_ROUTE)
+    }
+    val navigateToOperationSuccessfully: () -> Unit = {
+        navController.navigate(AppDestinations.OPERATION_SUCCESSFULLY_ROUTE)
+    }
 
     fun hideBottomBar(location: String?): Boolean{
         return hideBottomBar.contains(location)
@@ -72,6 +83,7 @@ class MainNavAction(
             AppDestinations.CREDIT_ROUTE -> Gray100
             AppDestinations.PROFILE_ROUTE -> Gray100
             AppDestinations.SERVICE_ROUTE -> Gray100
+            AppDestinations.CARD_CHARGE_ROUTE -> White
             else -> Color.White
         }
     }
@@ -83,6 +95,7 @@ class MainNavAction(
             AppDestinations.CREDIT_ROUTE -> "Mi Tarjeta"
             AppDestinations.PROFILE_ROUTE -> "Mi perfil"
             AppDestinations.SERVICE_ROUTE -> "Pago de servicios"
+            AppDestinations.CARD_CHARGE_ROUTE -> "Cargar SUBE"
             else -> ""
         }
     }
@@ -94,6 +107,7 @@ class MainNavAction(
             AppDestinations.CREDIT_ROUTE -> TextXL1Bold
             AppDestinations.PROFILE_ROUTE -> TextXL1Bold
             AppDestinations.SERVICE_ROUTE -> TextXL1Bold
+            AppDestinations.CARD_CHARGE_ROUTE -> TextXL1Bold
             else -> TextXL1Bold
         }
     }
@@ -105,6 +119,7 @@ class MainNavAction(
             AppDestinations.CREDIT_ROUTE -> Black
             AppDestinations.PROFILE_ROUTE -> Black
             AppDestinations.SERVICE_ROUTE -> Black
+            AppDestinations.CARD_CHARGE_ROUTE -> Black
             else -> Black
         }
     }
@@ -116,6 +131,7 @@ class MainNavAction(
             AppDestinations.CREDIT_ROUTE -> ""
             AppDestinations.PROFILE_ROUTE -> ""
             AppDestinations.SERVICE_ROUTE -> ""
+            AppDestinations.CARD_CHARGE_ROUTE -> ""
             else -> ""
         }
     }

@@ -30,14 +30,13 @@ fun SuccessMessage() {
                 .height(168.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-//            Cuando este la imagen OK descomentar
-//            Image(
-//                painter = painterResource(id = R.drawable.ok),
-//                contentDescription = "Operación exitosa",
-//                modifier = Modifier
-//                    .width(96.dp)
-//                    .height(96.dp)
-//            )
+            Image(
+                painter = painterResource(id = R.drawable.ok),
+                contentDescription = "Operación exitosa",
+                modifier = Modifier
+                    .width(96.dp)
+                    .height(96.dp)
+            )
 
             Spacer(modifier = Modifier.height(24.dp))
 

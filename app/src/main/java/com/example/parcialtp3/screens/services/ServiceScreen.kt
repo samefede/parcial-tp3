@@ -50,7 +50,11 @@ fun ServiceScreen(
             item {
                 ServiceCard(
                     iconResId = R.drawable.recargasube,
-                    serviceText = "RECARGA SUBE" )
+                    serviceText = "RECARGA SUBE",
+                    onClick = {
+                        navigationAction?.navigateToCardCharge?.let { it() }
+                    }
+                )
             }
             item {
                 ServiceCard(

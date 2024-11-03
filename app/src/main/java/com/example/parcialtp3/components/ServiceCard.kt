@@ -23,7 +23,7 @@ import com.example.parcialtp3.ui.theme.Gray500
 import com.example.parcialtp3.ui.theme.TextXS2Bold
 
 @Composable
-fun ServiceCard(iconResId: Int, serviceText: String) {
+fun ServiceCard(iconResId: Int, serviceText: String, onClick: () -> Unit = {}) {
     Box(
         modifier = Modifier
             .padding(top = 4.dp)
@@ -33,7 +33,7 @@ fun ServiceCard(iconResId: Int, serviceText: String) {
             .shadow(elevation = 6.dp, shape = RoundedCornerShape(8.dp))
             .background(color = Color.White, shape = RoundedCornerShape(8.dp))
             .border(BorderStroke(1.dp, Gray500), shape = RoundedCornerShape(8.dp))
-            .clickable { },
+            .clickable { onClick() },
         contentAlignment = Alignment.Center
     ) {
         Column(

@@ -15,8 +15,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.parcialtp3.screens.account.AccountRoute
+import com.example.parcialtp3.screens.cardCharge.CardChargeRoute
 import com.example.parcialtp3.screens.credit.CreditRoute
 import com.example.parcialtp3.screens.home.HomeRoute
+import com.example.parcialtp3.screens.operationSuccessfully.OperationSuccessfullyRoute
 import com.example.parcialtp3.screens.profile.ProfileRoute
 import com.example.parcialtp3.screens.services.ServiceRoute
 import com.example.parcialtp3.screens.signIn.SignInRoute
@@ -79,6 +81,14 @@ fun MainRouteNav(
 
         composable(route = AppDestinations.SIGN_IN_ROUTE){
             SignInRoute(navigationAction = navigationActions)
+        }
+
+        composable(route = AppDestinations.CARD_CHARGE_ROUTE){
+            CardChargeRoute(navigationAction = navigationActions)
+        }
+
+        composable(route = AppDestinations.OPERATION_SUCCESSFULLY_ROUTE){
+            OperationSuccessfullyRoute(navigationAction = navigationActions)
         }
     }
 }
