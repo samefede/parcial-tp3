@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.Dp
 import androidx.compose.foundation.shape.RoundedCornerShape
 import com.example.parcialtp3.ui.theme.Black
-import com.example.parcialtp3.ui.theme.Elevation
 import com.example.parcialtp3.ui.theme.TextXS2Bold
 
 @Composable
@@ -46,7 +45,8 @@ fun ActionCard(
                 color = Color(0xFFD1D1D7),
                 shape = shape,
 
-            )
+            ),
+        onClick = { }
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
