@@ -1,6 +1,7 @@
 package com.example.parcialtp3.screens
 
 import android.util.Log
+import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -40,6 +41,7 @@ import com.example.parcialtp3.ui.theme.Green900
 import com.example.parcialtp3.ui.theme.Purple900
 import com.example.parcialtp3.ui.theme.TextBaseBold
 import com.example.parcialtp3.ui.theme.TextXS1Bold
+import kotlinx.coroutines.delay
 
 @Composable
 //@Preview
@@ -51,6 +53,8 @@ fun SignIn(
     var username by remember { mutableStateOf("mor_2314") }
     var password by remember { mutableStateOf("83r5^_") }
     var loginResponse by remember { mutableStateOf<String?>(null) }
+
+    val offsetY = remember { Animatable(400f) }
 
     Box(modifier = Modifier
         .fillMaxSize()
@@ -71,10 +75,7 @@ fun SignIn(
                             .width(288.dp),
                         horizontalAlignment = Alignment.CenterHorizontally)
                     {
-                        Logo()
-                        //40.dp o 25.dp
-
-
+                        Logo() //40.dp o 25.dp
 
                         Row(modifier = Modifier
                             .fillMaxWidth()
@@ -149,10 +150,15 @@ fun SignIn(
                     }
                 }
 
+            LaunchedEffect(Unit) {
+                delay(500) // Espera 2 segundos
+                offsetY.animateTo(targetValue = 0f) // Ajusta el valor según necesites
+            }
                 Box(
                     modifier = Modifier
                         .weight(1.2f)
                         .fillMaxWidth()
+                        .offset(y = offsetY.value.dp)
                         .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
                         .background(Gray100)
                         .padding(horizontal = 12.dp, vertical = 24.dp)

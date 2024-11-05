@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.Dp
 import androidx.compose.foundation.shape.RoundedCornerShape
 import com.example.parcialtp3.ui.theme.Black
-import com.example.parcialtp3.ui.theme.Elevation
 import com.example.parcialtp3.ui.theme.TextXS2Bold
 
 @Composable
@@ -25,7 +24,8 @@ fun ActionCard(
     topLeftCornerRadius: Dp = 0.dp, // Radio para la esquina superior izquierda
     topRightCornerRadius: Dp = 0.dp, // Radio para la esquina superior derecha
     bottomRightCornerRadius: Dp = 0.dp, // Radio para la esquina inferior derecha
-    bottomLeftCornerRadius: Dp = 0.dp   // Radio para la esquina inferior izquierda
+    bottomLeftCornerRadius: Dp = 0.dp,   // Radio para la esquina inferior izquierda
+    onClick: () -> Unit = {} // Acción a realizar al hacer clic
 ) {
     //variable shape que contendra los radios para aplicar tanto a la card como al box
     val shape = RoundedCornerShape(
@@ -46,7 +46,8 @@ fun ActionCard(
                 color = Color(0xFFD1D1D7),
                 shape = shape,
 
-            )
+            ),
+        onClick = { onClick() }
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
