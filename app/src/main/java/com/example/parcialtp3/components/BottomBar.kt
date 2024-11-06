@@ -41,7 +41,7 @@ fun BottomBar(
     )
 
     NavigationBar(
-        containerColor = MaterialTheme.colorScheme.inverseSurface,
+        containerColor = MaterialTheme.colorScheme.background,
         modifier = Modifier
             .shadow(8.dp)
             .height(80.dp)
@@ -58,7 +58,8 @@ fun BottomBar(
                 icon = {
                     Box (
                         modifier = Modifier
-                            .fillMaxHeight(),
+                            .fillMaxHeight()
+                        ,
                         contentAlignment = Alignment.Center,
                     ){
                         if(selectedItem == index){
@@ -66,7 +67,7 @@ fun BottomBar(
                                 modifier = Modifier
                                     .width(64.dp)
                                     .height(2.dp)
-                                    .background(MaterialTheme.colorScheme.onSecondary)
+                                    .background(MaterialTheme.colorScheme.onSurfaceVariant)
                                     .align(Alignment.TopCenter)
                             )
                         }
