@@ -25,7 +25,7 @@ fun ActionCard(
     topRightCornerRadius: Dp = 0.dp, // Radio para la esquina superior derecha
     bottomRightCornerRadius: Dp = 0.dp, // Radio para la esquina inferior derecha
     bottomLeftCornerRadius: Dp = 0.dp,   // Radio para la esquina inferior izquierda
-    onClick: () -> Unit = {} // Acción a realizar al hacer clic
+    onClick: () -> Unit = {}
 ) {
     //variable shape que contendra los radios para aplicar tanto a la card como al box
     val shape = RoundedCornerShape(
