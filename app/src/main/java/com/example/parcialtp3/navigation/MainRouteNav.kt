@@ -82,7 +82,7 @@ fun MainRouteNav(
         }
 
         composable(route = AppDestinations.SIGN_IN_ROUTE){
-            SignInRoute(navigationAction = navigationActions)
+            SignInRoute(navigationAction = navigationActions, isDarkTheme = isDarkTheme)
         }
 
         composable(route = AppDestinations.CARD_CHARGE_ROUTE){

@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -32,12 +33,11 @@ import com.example.parcialtp3.components.CustomButton
 import com.example.parcialtp3.components.CustomRadioButton
 import com.example.parcialtp3.components.ErrorModal
 import com.example.parcialtp3.components.Input
+import com.example.parcialtp3.components.LinkItem
 import com.example.parcialtp3.components.Logo
 import com.example.parcialtp3.navigation.MainNavAction
 import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.Gray100
-import com.example.parcialtp3.ui.theme.Green800
-import com.example.parcialtp3.ui.theme.Green900
 import com.example.parcialtp3.ui.theme.Purple900
 import com.example.parcialtp3.ui.theme.TextBaseBold
 import com.example.parcialtp3.ui.theme.TextXS1Bold
@@ -48,6 +48,7 @@ import kotlinx.coroutines.delay
 fun SignIn(
     navigationAction: MainNavAction,
     modifier: Modifier = Modifier,
+    isDarkTheme: MutableState<Boolean>
 ) {
     val viewModel: SignInViewModel = viewModel()
     var username by remember { mutableStateOf("mor_2314") }
@@ -58,7 +59,7 @@ fun SignIn(
 
     Box(modifier = Modifier
         .fillMaxSize()
-        .background(Green800)
+        .background(MaterialTheme.colorScheme.onSecondary)
     ){
 
         Column(modifier = Modifier.fillMaxHeight()) {
@@ -105,7 +106,7 @@ fun SignIn(
                                         modifier = Modifier
                                             .size(56.dp, 36.dp)
                                             .clip(RoundedCornerShape(100.dp))
-                                            .background(Green900),
+                                            .background(MaterialTheme.colorScheme.tertiaryContainer),
                                         contentAlignment = Alignment.Center
                                     ){
                                         Image(
@@ -130,7 +131,7 @@ fun SignIn(
                                 modifier = Modifier
                                     .size(56.dp, 36.dp)
                                     .clip(RoundedCornerShape(100.dp))
-                                    .background(Green900),
+                                    .background(MaterialTheme.colorScheme.tertiaryContainer),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Image(
@@ -160,14 +161,14 @@ fun SignIn(
                         .fillMaxWidth()
                         .offset(y = offsetY.value.dp)
                         .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
-                        .background(Gray100)
+                        .background(MaterialTheme.colorScheme.background)
                         .padding(horizontal = 12.dp, vertical = 24.dp)
                 ) {
                     Column() {
                         Text(
                             text = "Ingresa a tu cuenta:",
                             style = TextBaseBold,
-                            color = Black,
+                            color = MaterialTheme.colorScheme.surface,
                             modifier = Modifier.fillMaxWidth()
                         )
 
@@ -180,7 +181,7 @@ fun SignIn(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.End
                         ) {
-                            Text(text = "Olvidé mi contraseña", color = Purple900, style = TextXS1Bold)
+                            Text(text = "Olvidé mi contraseña", color = MaterialTheme.colorScheme.secondary, style = TextXS1Bold)
                         }
 
                         Spacer(modifier = Modifier.size(24.dp))
@@ -188,6 +189,10 @@ fun SignIn(
                         CustomRadioButton(text = "Recordar datos de ingreso")
 
                         Spacer(modifier = Modifier.size(24.dp))
+
+                        LinkItem(buttonName = "Dark Mode", "", isFirst = true, isLast = true, isSwitch = true, switched = isDarkTheme.value, onSwitchedChange = {
+                            isDarkTheme.value = !isDarkTheme.value
+                        })
 
                         Row(
                             modifier = Modifier.fillMaxSize(),

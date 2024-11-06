@@ -14,11 +14,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.parcialtp3.R
@@ -35,14 +38,14 @@ fun CreditScreen() {
     LazyColumn (
         modifier = Modifier
             .fillMaxSize()
-            .background(Gray100)
+            .background(MaterialTheme.colorScheme.background)
             .padding(horizontal = 12.dp)
     ) {
         item {
             Text(
                 text = "TARJETA VIRTUAL",
                 style = TextXS2Bold,
-                color = Black,
+                color = MaterialTheme.colorScheme.surface,
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -62,7 +65,9 @@ fun CreditScreen() {
         item {
             val textWithIcon = buildAnnotatedString {
                 appendInlineContent("icon", "[icon]")
-                append(" ¿Sabías que puedes pedir una tarjeta Mastercard física para utilizar directamente en los negocios que elijas?")
+                withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.surface)) {
+                    append(" ¿Sabías que puedes pedir una tarjeta Mastercard física para utilizar directamente en los negocios que elijas?")
+                }
             }
 
             val inlineContent = mapOf(
@@ -83,7 +88,7 @@ fun CreditScreen() {
             Text(
                 text = textWithIcon,
                 style = TextXS1Regular,
-                color = Black,
+                color = MaterialTheme.colorScheme.surface,
                 inlineContent = inlineContent
             )
 
@@ -95,7 +100,7 @@ fun CreditScreen() {
                 Text(
                     text = "TARJETA FÍSICA",
                     style = TextXS2Bold,
-                    color = Black,
+                    color = MaterialTheme.colorScheme.surface,
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 LinkItem(buttonName = "Quiero mi tarjeta fisica", isFirst = true, isLast = false, isSwitch = false, switched = false, onSwitchedChange = {})

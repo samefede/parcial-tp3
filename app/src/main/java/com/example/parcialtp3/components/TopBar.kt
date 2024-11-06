@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,7 +26,7 @@ fun TopBar(topBarColor: Color, title: String, titleStyle: TextStyle, titleColor:
     val align = if (description.isNotEmpty()) Alignment.TopStart else Alignment.Center
 
     Box(modifier = Modifier
-        .background(topBarColor)
+        .background(MaterialTheme.colorScheme.background)
         .padding(top = 30.dp, start = 25.dp, end = 25.dp)
         .height(50.dp)
         .fillMaxWidth(),
@@ -35,13 +36,13 @@ fun TopBar(topBarColor: Color, title: String, titleStyle: TextStyle, titleColor:
             Text(
                 text = title,
                 style = titleStyle,
-                color = titleColor,
+                color = MaterialTheme.colorScheme.surface,
             )
             if (description.isNotEmpty()){
                 Text(
                     text = description,
                     style = TextXS2Regular,
-                    color = Gray900,
+                    color = MaterialTheme.colorScheme.tertiary,
                 )
             }
         }

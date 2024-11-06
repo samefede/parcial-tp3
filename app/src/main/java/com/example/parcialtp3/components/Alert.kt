@@ -3,6 +3,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -28,7 +29,7 @@ fun AlertCustom(
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp),
-        colors = CardDefaults.cardColors(containerColor = Red900),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.errorContainer),
         onClick = { }
     ) {
         Row(
@@ -44,13 +45,13 @@ fun AlertCustom(
             ) {
                 Text(
                     text = alertText.replaceFirstChar { it.uppercase() },
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.error,
                     style = TextXS2Regular
                 )
                 Spacer(modifier = Modifier.height(1.dp))
                 Text(
                     text = linkText.replaceFirstChar { it.uppercase() },
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.error,
                     style = TextXS2Bold.copy(textDecoration = TextDecoration.Underline),
                 )
             }

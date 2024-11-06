@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -40,7 +41,7 @@ fun BottomBar(
     )
 
     NavigationBar(
-        containerColor = Color.White,
+        containerColor = MaterialTheme.colorScheme.inverseSurface,
         modifier = Modifier
             .shadow(8.dp)
             .height(80.dp)
@@ -65,7 +66,7 @@ fun BottomBar(
                                 modifier = Modifier
                                     .width(64.dp)
                                     .height(2.dp)
-                                    .background(Green800)
+                                    .background(MaterialTheme.colorScheme.onSecondary)
                                     .align(Alignment.TopCenter)
                             )
                         }

@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -120,7 +121,7 @@ fun Input(inputName: String, inputType: String, onTextChange: (String) -> Unit) 
                             Text(
                                 text = inputName,
                                 style = TextXS1Regular,
-                                color = Gray900,
+                                color = MaterialTheme.colorScheme.tertiary,
                                 modifier = Modifier
                                     .padding(start = 1.dp)
                                     .offset(y = if (isClickedInput || text.isNotEmpty()) (-5).dp else 0.dp)

@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -36,7 +37,7 @@ fun MovementRow(date: String, description: String, transactionId: String, amount
         modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
-            .background(White2)
+            .background(MaterialTheme.colorScheme.onSecondaryContainer)
             .border(1.dp, Gray500)
             .padding(horizontal = 12.dp, vertical = 8.dp)
     ) {
@@ -47,7 +48,7 @@ fun MovementRow(date: String, description: String, transactionId: String, amount
             Text(
                 text = date,
                 style = TextXS1Regular,
-                color = Black,
+                color = MaterialTheme.colorScheme.surfaceContainerLow,
                 modifier = Modifier.width(78.dp)
             )
 
@@ -60,13 +61,13 @@ fun MovementRow(date: String, description: String, transactionId: String, amount
                 Text(
                     text = description,
                     style = TextXS1Regular,
-                    color = Black,
+                    color = MaterialTheme.colorScheme.surfaceContainerLow,
                     maxLines = 1
                 )
                 Text(
                     text = "Aut. $transactionId",
                     style = TextXS1Regular,
-                    color = Black,
+                    color =  MaterialTheme.colorScheme.surfaceTint,
                     maxLines = 1
                 )
 

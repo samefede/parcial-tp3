@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -50,7 +51,7 @@ fun AccountScreen() {
     println("Bank Account Transactions: $bankAccountTransactions")
     Column(
         modifier = Modifier
-            .background(Gray100),
+            .background(MaterialTheme.colorScheme.background),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column (
@@ -85,13 +86,11 @@ fun AccountScreen() {
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .background(Black)
+                .background(MaterialTheme.colorScheme.onSecondaryContainer)
                 .fillMaxWidth()
                 .height(35.dp)
         ) {
-            Text(text = "MOVIMIENTOS", style = TextXS1Bold, color = Color.White, modifier = Modifier.padding(start = 10.dp))
-
-
+            Text(text = "MOVIMIENTOS", style = TextXS1Bold, color = MaterialTheme.colorScheme.surface, modifier = Modifier.padding(start = 10.dp))
         }
 
         LazyColumn(

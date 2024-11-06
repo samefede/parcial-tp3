@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -34,7 +35,7 @@ fun TotalAmount(amount: Double, textSize: TextSize) {
         Text(
             text = "Saldo disponible".uppercase(),
             style = TextXS2Bold,
-            color = Black,
+            color = MaterialTheme.colorScheme.surface,
         )
         Text(
             text = formatAmountToCash(amount),
@@ -42,7 +43,7 @@ fun TotalAmount(amount: Double, textSize: TextSize) {
                 TextSize.SMALL -> TextXL4
                 TextSize.BIG -> TextXL5
             },
-            color = Black
+            color = MaterialTheme.colorScheme.surface
         )
     }
 }

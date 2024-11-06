@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,11 +40,11 @@ fun TotalAmountCard(amount: Double, cvu: String) {
         modifier = Modifier,
         elevation = CardDefaults.cardElevation(Elevation),
         shape = Shapes.medium,
-        border = BorderStroke(1.dp, Gray500)
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.onSecondaryContainer)
     ) {
         Column(
             modifier = Modifier
-                .background(White2)
+                .background(MaterialTheme.colorScheme.onSecondaryContainer)
                 .padding(24.dp)
         ) {
             TotalAmount(amount, TextSize.SMALL)
@@ -64,12 +65,12 @@ fun TotalAmountCard(amount: Double, cvu: String) {
                 Row() {
                     Text(
                         text = "CVU: ",
-                        color = Gray900,
+                        color = MaterialTheme.colorScheme.tertiary,
                         style = TextXS1Regular,
                     )
                     Text(
                         text = cvu,
-                        color = Black,
+                        color = MaterialTheme.colorScheme.secondary,
                         style = TextXS1Bold,
                         textAlign = TextAlign.Center,
                     )
@@ -78,7 +79,7 @@ fun TotalAmountCard(amount: Double, cvu: String) {
                 Text(
                     text = "Copiar",
                     style = TextXS1Bold,
-                    color = Purple900,
+                    color = MaterialTheme.colorScheme.secondary,
                     modifier = Modifier.clickable {
                         clipboardManager.setText(AnnotatedString(cvu))
                     }

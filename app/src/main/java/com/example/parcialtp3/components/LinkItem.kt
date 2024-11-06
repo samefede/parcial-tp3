@@ -13,7 +13,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,6 +33,8 @@ import com.example.parcialtp3.R
 import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.Gray500
 import com.example.parcialtp3.ui.theme.Gray900
+import com.example.parcialtp3.ui.theme.Green900
+import com.example.parcialtp3.ui.theme.Purple900
 import com.example.parcialtp3.ui.theme.TextBaseBold
 import com.example.parcialtp3.ui.theme.TextXS1Regular
 import com.example.parcialtp3.ui.theme.White2
@@ -59,8 +64,8 @@ fun LinkItem(
             .fillMaxWidth()
             .height(if (descriptionEmpty) 56.dp else 74.13.dp)
             .clip(shape)
-            .background(White2)
-            .border(1.dp, Gray500, shape)
+            .background(MaterialTheme.colorScheme.surfaceContainer)
+            .border(1.dp, MaterialTheme.colorScheme.outline, shape)
             .clickable { isClicked = !isClicked }
             .padding(horizontal = 12.dp, vertical = if (descriptionEmpty) 8.dp else 16.dp),
         contentAlignment = Alignment.Center
@@ -75,9 +80,9 @@ fun LinkItem(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.Start,
             ){
-                Text(text = buttonName, style = TextBaseBold, color = Black )
+                Text(text = buttonName, style = TextBaseBold, color = MaterialTheme.colorScheme.surface )
                 if (!descriptionEmpty) {
-                    Text(text = description, style = TextXS1Regular, color = Gray900)
+                    Text(text = description, style = TextXS1Regular, color = MaterialTheme.colorScheme.tertiary)
                 }
             }
 
@@ -89,7 +94,17 @@ fun LinkItem(
 
             ) {
                 if(isSwitch){
-                    Switch(checked = switched, onCheckedChange = onSwitchedChange )
+                    Switch(
+                        checked = switched,
+                        onCheckedChange = onSwitchedChange,
+                        colors = SwitchDefaults.colors(
+                            checkedThumbColor = Green900,
+                            uncheckedThumbColor = Gray900,
+                            checkedTrackColor = Purple900,
+                            uncheckedTrackColor = White2
+                        )
+                    )
+
                 } else {
                     Image(
                         painter = painterResource(id = R.drawable.btn),

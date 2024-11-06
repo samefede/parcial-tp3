@@ -29,7 +29,7 @@ fun ProfileScreen(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.surface)
+            .background(MaterialTheme.colorScheme.background)
             .padding(horizontal = 12.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -46,7 +46,7 @@ fun ProfileScreen(
             Text(
                 text = "\uD83D\uDC4B Hola Mariana Belén",
                 style = TextXL2Bold,
-                color = Black,
+                color = MaterialTheme.colorScheme.surface,
                 modifier = Modifier.padding(top = 8.dp)
             )
 

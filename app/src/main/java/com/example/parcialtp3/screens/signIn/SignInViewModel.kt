@@ -16,8 +16,8 @@ class SignInViewModel : ViewModel() {
             try {
                 Log.d("SignIn", "Trying to login with username: $username and password: $password")
                 //username: "mor_2314",
-                //password: "83r5^_"
-                val response = repository.login(username, password)
+                //password: "83r5^_",
+                val response = repository.login("mor_2314",  "83r5^_")
                 onResult(response)
             } catch (e: Exception) {
                 Log.e("SignIn", "Error while trying to login", e)

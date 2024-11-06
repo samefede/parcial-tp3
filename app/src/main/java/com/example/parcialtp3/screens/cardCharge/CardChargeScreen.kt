@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -34,7 +35,7 @@ fun CardChargeScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Gray100)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         Spacer(modifier = Modifier.height(40.dp))
 
@@ -45,7 +46,7 @@ fun CardChargeScreen(
         ) {
             Text(
                 text = "Verificá que la información sea\ncorrecta:",
-                color = Black,
+                color = MaterialTheme.colorScheme.surface,
                 style = TextXL1Bold,
                 textAlign = TextAlign.Center
             )
@@ -60,8 +61,6 @@ fun CardChargeScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(47.dp)
         ) {
-
-
             CardInfo(cardNumber = "6061 3580 2384 9041", amount = "$ 200,00")
         }
 
