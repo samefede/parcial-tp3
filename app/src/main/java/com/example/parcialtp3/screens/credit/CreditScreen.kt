@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.InlineTextContent
@@ -103,7 +104,8 @@ fun CreditScreen(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 LinkItem(buttonName = "Quiero mi tarjeta fisica", isFirst = true)
-                LinkItem(buttonName = "Ya tengo mi tarjeta fisica", description="Activa tu tarjeta para comenzar a usarla", isLast = true)
+//                Spacer(modifier = Modifier.height(1.5.dp))
+                LinkItem( modifier = Modifier.offset(y = (-1).dp), buttonName = "Ya tengo mi tarjeta fisica", description="Activa tu tarjeta para comenzar a usarla", isLast = true)
             }
             Spacer(modifier = Modifier.height(16.dp))
         }
