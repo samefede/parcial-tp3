@@ -102,8 +102,8 @@ fun CreditScreen(
                     color = Black,
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                LinkItem(buttonName = "Quiero mi tarjeta fisica", isFirst = true)
-                LinkItem(buttonName = "Ya tengo mi tarjeta fisica", description="Activa tu tarjeta para comenzar a usarla", isLast = true)
+                LinkItem(buttonName = "Quiero mi tarjeta fisica", isFirst = true, isLast = false, isSwitch = false, switched = false, onSwitchedChange = {})
+                LinkItem(buttonName = "Ya tengo mi tarjeta fisica", description="Activa tu tarjeta para comenzar a usarla", isLast = true, isFirst = false, isSwitch = false, switched = false, onSwitchedChange = {})
             }
             Spacer(modifier = Modifier.height(16.dp))
         }

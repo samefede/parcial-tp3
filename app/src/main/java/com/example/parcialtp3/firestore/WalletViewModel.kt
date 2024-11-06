@@ -25,26 +25,4 @@ class WalletViewModel : ViewModel() {
             }
         }
     }
-
-    /*suspend fun fetchUsers(): List<Wallet> {
-        val db = FirebaseFirestore.getInstance()
-        return try {
-            val result = db.collection("wallet") // Cambia "users" por el nombre de tu colección
-                .get()
-                .await()
-
-            result.documents.map { document ->
-                document.toObject(Wallet::class.java)!!.copy(id = document.id)
-            }
-        } catch (e: Exception) {
-            emptyList() // Maneja errores o retorna una lista vacía en caso de error
-        }
-    }*/
-    /*fun addTransaction(transaction: Transaction) {
-        walletCollection.add(transaction).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                fetchWallet()
-            }
-        }
-    }*/
 }

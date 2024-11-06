@@ -43,7 +43,15 @@ import com.example.parcialtp3.ui.theme.TextXS1Regular
 import com.example.parcialtp3.ui.theme.White2
 
 @Composable
-fun LinkItem(buttonName: String, description: String = "", isFirst: Boolean = false, isLast: Boolean = false ) {
+fun LinkItem(
+            buttonName: String,
+             description: String = "",
+             isFirst: Boolean = false,
+             isLast: Boolean = false,
+             isSwitch: Boolean = false,
+             switched: Boolean = false,
+             onSwitchedChange: (Boolean) -> Unit
+) {
     val descriptionEmpty = description.isEmpty()
     val shape = when {
         isFirst && isLast -> RoundedCornerShape(8.dp)
@@ -89,10 +97,14 @@ fun LinkItem(buttonName: String, description: String = "", isFirst: Boolean = fa
                 verticalArrangement = if (descriptionEmpty) Arrangement.Center else Arrangement.Top
 
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.btn),
-                    contentDescription = "Boton"
-                )
+                if(isSwitch){
+                    Switch(checked = switched, onCheckedChange = onSwitchedChange )
+                } else {
+                    Image(
+                        painter = painterResource(id = R.drawable.btn),
+                        contentDescription = "Boton"
+                    )
+                }
             }
         }
     }
@@ -102,6 +114,6 @@ fun LinkItem(buttonName: String, description: String = "", isFirst: Boolean = fa
 @Composable
 @Preview
 fun LinkItemPreview() {
-    LinkItem("Quiero mi tarjeta física", "", isFirst = true, isLast = false)
-    LinkItem("Ya tengo mi tarjeta física", "Activa tu tarjeta para comenzar a usarla", isFirst = false, isLast = true)
+    //LinkItem("Quiero mi tarjeta física", "", isFirst = true, isLast = false)
+    //LinkItem("Ya tengo mi tarjeta física", "Activa tu tarjeta para comenzar a usarla", isFirst = false, isLast = true)
 }

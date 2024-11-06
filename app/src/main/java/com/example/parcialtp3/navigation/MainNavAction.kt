@@ -5,8 +5,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.navigation.NavHostController
 import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.Gray100
+import com.example.parcialtp3.ui.theme.TextBaseBold
 import com.example.parcialtp3.ui.theme.TextXL1Bold
 import com.example.parcialtp3.ui.theme.White
+import com.example.parcialtp3.ui.theme.White2
 
 object AppDestinations{
     const val SIGN_IN_ROUTE = "signin"
@@ -74,6 +76,19 @@ class MainNavAction(
         return hideTopBar.contains(location)
     }
 
+    fun getNavigationTopBar(location: String?): Boolean{
+        return when(location){
+            AppDestinations.HOME_ROUTE -> false
+            AppDestinations.ACCOUNT_ROUTE -> false
+            AppDestinations.CREDIT_ROUTE -> false
+            AppDestinations.PROFILE_ROUTE -> false
+            AppDestinations.SERVICE_ROUTE -> false
+            AppDestinations.CARD_CHARGE_ROUTE -> true
+            AppDestinations.OPERATION_SUCCESSFULLY_ROUTE -> true
+            else -> false
+        }
+    }
+
     fun getColorTopBar(location: String?): Color{
         return when(location){
             AppDestinations.HOME_ROUTE -> Gray100
@@ -81,7 +96,8 @@ class MainNavAction(
             AppDestinations.CREDIT_ROUTE -> Gray100
             AppDestinations.PROFILE_ROUTE -> Gray100
             AppDestinations.SERVICE_ROUTE -> Gray100
-            AppDestinations.CARD_CHARGE_ROUTE -> White
+            AppDestinations.CARD_CHARGE_ROUTE -> White2
+            AppDestinations.OPERATION_SUCCESSFULLY_ROUTE -> White2
             else -> Color.White
         }
     }
@@ -93,7 +109,8 @@ class MainNavAction(
             AppDestinations.CREDIT_ROUTE -> "Mi Tarjeta"
             AppDestinations.PROFILE_ROUTE -> "Mi perfil"
             AppDestinations.SERVICE_ROUTE -> "Pago de servicios"
-            AppDestinations.CARD_CHARGE_ROUTE -> "Cargar SUBE"
+            AppDestinations.CARD_CHARGE_ROUTE -> "Cargar Sube"
+            AppDestinations.OPERATION_SUCCESSFULLY_ROUTE -> "Cargar Sube"
             else -> ""
         }
     }
@@ -105,7 +122,8 @@ class MainNavAction(
             AppDestinations.CREDIT_ROUTE -> TextXL1Bold
             AppDestinations.PROFILE_ROUTE -> TextXL1Bold
             AppDestinations.SERVICE_ROUTE -> TextXL1Bold
-            AppDestinations.CARD_CHARGE_ROUTE -> TextXL1Bold
+            AppDestinations.CARD_CHARGE_ROUTE -> TextBaseBold
+            AppDestinations.OPERATION_SUCCESSFULLY_ROUTE -> TextBaseBold
             else -> TextXL1Bold
         }
     }
@@ -118,6 +136,7 @@ class MainNavAction(
             AppDestinations.PROFILE_ROUTE -> Black
             AppDestinations.SERVICE_ROUTE -> Black
             AppDestinations.CARD_CHARGE_ROUTE -> Black
+            AppDestinations.OPERATION_SUCCESSFULLY_ROUTE -> Black
             else -> Black
         }
     }

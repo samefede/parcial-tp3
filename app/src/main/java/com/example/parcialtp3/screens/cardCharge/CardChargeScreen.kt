@@ -34,43 +34,6 @@ fun CardChargeScreen(
             .fillMaxSize()
             .background(Gray100)
     ) {
-        // Custom Top Bar
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(64.dp)
-                .background(Color.White)
-                .shadow(1.dp)
-                .padding(start = 10.dp, end = 10.dp)
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.back),
-                contentDescription = "Back",
-                modifier = Modifier
-                    .size(20.dp)
-                    .clickable { navigationAction.navigateToService }
-            )
-
-            Spacer(modifier = Modifier.width(115.dp))
-
-            Text(
-                text = "Cargar Sube",
-                color = Black,
-                style = TextXL1Bold,
-                modifier = Modifier.weight(1f)
-            )
-
-            Icon(
-                painter = painterResource(id = R.drawable.close),
-                contentDescription = "Close",
-                modifier = Modifier
-                    .size(20.dp)
-                    .clickable { navigationAction.navigateToService }
-            )
-        }
-
         Spacer(modifier = Modifier.height(40.dp))
 
         Column(
