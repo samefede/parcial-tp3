@@ -47,8 +47,7 @@ import kotlinx.coroutines.delay
 //@Preview
 fun SignIn(
     navigationAction: MainNavAction,
-    modifier: Modifier = Modifier,
-    isDarkTheme: MutableState<Boolean>
+    modifier: Modifier = Modifier
 ) {
     val viewModel: SignInViewModel = viewModel()
     var username by remember { mutableStateOf("mor_2314") }
@@ -189,10 +188,6 @@ fun SignIn(
                         CustomRadioButton(text = "Recordar datos de ingreso")
 
                         Spacer(modifier = Modifier.size(24.dp))
-
-                        LinkItem(buttonName = "Dark Mode", "", isFirst = true, isLast = true, isSwitch = true, switched = isDarkTheme.value, onSwitchedChange = {
-                            isDarkTheme.value = !isDarkTheme.value
-                        })
 
                         Row(
                             modifier = Modifier.fillMaxSize(),

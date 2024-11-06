@@ -8,8 +8,8 @@ import com.example.parcialtp3.screens.SignIn
 @Composable
 fun SignInRoute(
     navigationAction: MainNavAction,
-    isDarkTheme: MutableState<Boolean>
+
 
 ){
-    SignIn(navigationAction, isDarkTheme = isDarkTheme)
+    SignIn(navigationAction )
 }
