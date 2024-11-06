@@ -19,7 +19,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.example.parcialtp3.R
-import com.example.parcialtp3.navigation.MainNavAction
 
 @Composable
 fun NavigationTopBar(onClick : () -> Unit, quitScreen: () -> Unit, topBarColor: Color, title: String, titleStyle: TextStyle, titleColor: Color){

@@ -62,11 +62,11 @@ fun MainRouteNav(
         }
 
         composable(route = AppDestinations.ACCOUNT_ROUTE) {
-           AccountRoute(navigationAction = navigationActions)
+           AccountRoute()
         }
 
         composable(route = AppDestinations.CREDIT_ROUTE){
-            CreditRoute(navigationAction = navigationActions)
+            CreditRoute()
         }
 
         composable(
@@ -74,7 +74,7 @@ fun MainRouteNav(
             enterTransition = enterTransition,
             exitTransition = exitTransition,
         ){
-            ProfileRoute(navigationAction = navigationActions, isDarkTheme = isDarkTheme)
+            ProfileRoute(isDarkTheme = isDarkTheme)
         }
 
         composable(route = AppDestinations.SERVICE_ROUTE){
