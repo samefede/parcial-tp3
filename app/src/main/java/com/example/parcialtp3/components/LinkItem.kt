@@ -43,7 +43,15 @@ import com.example.parcialtp3.ui.theme.TextXS1Regular
 import com.example.parcialtp3.ui.theme.White2
 
 @Composable
-fun LinkItem(modifier: Modifier = Modifier, buttonName: String, description: String = "", isFirst: Boolean = false, isLast: Boolean = false) {
+fun LinkItem(
+            buttonName: String,
+             description: String = "",
+             isFirst: Boolean = false,
+             isLast: Boolean = false,
+             isSwitch: Boolean = false,
+             switched: Boolean = false,
+             onSwitchedChange: (Boolean) -> Unit
+) {
     val descriptionEmpty = description.isEmpty()
     val shape = when {
         isFirst && isLast -> RoundedCornerShape(8.dp)
@@ -54,8 +62,9 @@ fun LinkItem(modifier: Modifier = Modifier, buttonName: String, description: Str
 
     var isClicked by remember { mutableStateOf(false) }
 
+    var isSwitched by remember { mutableStateOf(false) }
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
             .height(if (descriptionEmpty) 56.dp else 74.13.dp)
             .clip(shape)
@@ -65,40 +74,46 @@ fun LinkItem(modifier: Modifier = Modifier, buttonName: String, description: Str
             .padding(horizontal = 12.dp, vertical = if (descriptionEmpty) 8.dp else 16.dp),
         contentAlignment = Alignment.Center
     ) {
-        Row(
-            modifier = Modifier.height(if (descriptionEmpty) 24.dp else 42.13.dp),
+        Row (
+            modifier = Modifier.height( if(descriptionEmpty) 24.dp else 42.13.dp ),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            Column(
-                modifier = Modifier.fillMaxHeight(),
+        ){
+            Column (
+                modifier = Modifier
+                    .fillMaxHeight(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.Start,
-            ) {
-                Text(text = buttonName, style = TextBaseBold, color = Black)
+            ){
+                Text(text = buttonName, style = TextBaseBold, color = Black )
                 if (!descriptionEmpty) {
                     Text(text = description, style = TextXS1Regular, color = Gray900)
                 }
             }
 
-            Column(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .weight(1f),
+            Column (modifier = Modifier
+                .fillMaxHeight()
+                .weight(1f),
                 horizontalAlignment = Alignment.End,
                 verticalArrangement = if (descriptionEmpty) Arrangement.Center else Arrangement.Top
+
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.btn),
-                    contentDescription = "Boton"
-                )
+                if(isSwitch){
+                    Switch(checked = switched, onCheckedChange = onSwitchedChange )
+                } else {
+                    Image(
+                        painter = painterResource(id = R.drawable.btn),
+                        contentDescription = "Boton"
+                    )
+                }
             }
         }
     }
 }
 
-//@Composable
-//@Preview
-//fun LinkItemPreview() {
-//    LinkItem("Quiero mi tarjeta física", "", isFirst = true, isLast = false)
-//    LinkItem("Ya tengo mi tarjeta física", "Activa tu tarjeta para comenzar a usarla", isFirst = false, isLast = true)
-//}
+
+@Composable
+@Preview
+fun LinkItemPreview() {
+    //LinkItem("Quiero mi tarjeta física", "", isFirst = true, isLast = false)
+    //LinkItem("Ya tengo mi tarjeta física", "Activa tu tarjeta para comenzar a usarla", isFirst = false, isLast = true)
+}

@@ -6,13 +6,15 @@ import androidx.compose.ui.Modifier
 import com.example.parcialtp3.navigation.MainNavAction
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -26,12 +28,13 @@ import com.example.parcialtp3.ui.theme.TextXL2Bold
 @Composable
 fun ProfileScreen(
     navigationAction: MainNavAction,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isDarkTheme: MutableState<Boolean>
 ){
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .background(Gray100)
+            .background(MaterialTheme.colorScheme.surface)
             .padding(horizontal = 12.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -54,16 +57,18 @@ fun ProfileScreen(
 
             Spacer(modifier = Modifier.size(40.dp))
 
-            LinkItem(buttonName = "Mis datos", description = "", isFirst = true, isLast = false)
-            LinkItem(modifier = Modifier.offset(y = (-1).dp), buttonName = "Mi CVU", "", isFirst = false, isLast = false)
-            LinkItem(modifier = Modifier.offset(y = (-2).dp), buttonName = "Configuración", "", isFirst = false, isLast = false)
-            LinkItem(modifier = Modifier.offset(y = (-3).dp), buttonName = "Ayuda", "", isFirst = false, isLast = false)
-            LinkItem(modifier = Modifier.offset(y = (-4).dp), buttonName = "Términos y condiciones", "", isFirst = false, isLast = false)
-            LinkItem(modifier = Modifier.offset(y = (-5).dp), buttonName = "Cerrar sesión", "", isFirst = false, isLast = true)
+            LinkItem(buttonName = "Mis datos", "", isFirst = true, isLast = false, isSwitch = false, switched = false, onSwitchedChange = {})
+            LinkItem(buttonName = "Mi CVU", "", isFirst = false, isLast = false, isSwitch = false, switched = false, onSwitchedChange = {})
+            LinkItem(buttonName = "Configuración", "", isFirst = false, isLast = false, isSwitch = false, switched = false, onSwitchedChange = {})
+            LinkItem(buttonName = "Ayuda", "", isFirst = false, isLast = false, isSwitch = false, switched = false, onSwitchedChange = {})
+            LinkItem(buttonName = "Términos y condiciones", "", isFirst = false, isLast = false, isSwitch = false, switched = false, onSwitchedChange = {})
+            LinkItem(buttonName = "Cerrar sesión", "", isFirst = false, isLast = true, isSwitch = false, switched = false, onSwitchedChange = {})
 
             Spacer(modifier = Modifier.size(40.dp))
 
-            LinkItem(buttonName = "Dark Mode", description = "", isFirst = true, isLast = true)
+            LinkItem(buttonName = "Dark Mode", "", isFirst = true, isLast = true, isSwitch = true, switched = isDarkTheme.value, onSwitchedChange = {
+                isDarkTheme.value = !isDarkTheme.value
+            })
 
             Spacer(modifier = Modifier.size(40.dp))
         }
