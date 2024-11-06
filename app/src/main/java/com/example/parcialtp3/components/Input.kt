@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -47,7 +46,6 @@ fun Input(inputName: String, inputType: String, onTextChange: (String) -> Unit) 
     var text by remember { mutableStateOf("") }
     var isPasswordVisible by remember { mutableStateOf(inputType !== "password") }
     var isClickedInput by remember { mutableStateOf(false) }
-    val shape = RoundedCornerShape(3.dp)
     var error by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf("") }
 
@@ -77,84 +75,101 @@ fun Input(inputName: String, inputType: String, onTextChange: (String) -> Unit) 
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(64.dp)
-                .clip(shape)
-                .background(White2)
-                .border(1.dp, if (error) Red900 else if (isClickedInput) Purple900 else Gray500, shape)
-                .clickable {
-                    if (!isClickedInput || text.isNotEmpty()) isClickedInput = true
-                }
-                .padding(horizontal = 12.dp, vertical = 8.dp),
-            contentAlignment = Alignment.Center
+                .height(58.dp)
+                .clip(RoundedCornerShape(4.dp))
+                .let {
+                    if (!isClickedInput) {
+                        it
+                    } else {
+                        it.background(Gray500)
+                    }
+                },
+                    contentAlignment = Alignment.Center
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 2.dp)
+                    .height(54.dp)
+                    .clip(RoundedCornerShape(3.dp))
+                    .background(White2)
+                    .clickable {
+                        if (!isClickedInput || text.isNotEmpty()) isClickedInput = true
+                    }
+                    .border(1.dp, if (error) Red900 else if (isClickedInput) Purple900 else Gray500, RoundedCornerShape(3.dp))
+                    .padding(horizontal = 12.dp, vertical = 8.dp),
+                contentAlignment = Alignment.Center
             ) {
-                if (!isClickedInput) {
-                    Text(
-                        text = inputName,
-                        style = TextXS1Regular,
-                        color = Black,
-                    )
-                } else {
-                    Column(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.Start,
-                    ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    if (!isClickedInput) {
                         Text(
                             text = inputName,
                             style = TextXS1Regular,
-                            color = Gray900,
-                            modifier = Modifier
-                                .padding(start = 1.dp)
-                                .offset(y = if (isClickedInput || text.isNotEmpty()) (-5).dp else 0.dp)
-                                .background(White2)
+                            color = Black,
                         )
-                        BasicTextField(
-                            value = text,
-                            textStyle = TextBaseRegular,
-                            maxLines = 1,
-                            onValueChange = {
-                                if (validateInput(it)) {
-                                    text = it
-                                    onTextChange(it)
-                                    error = false
-                                } else {
-                                    text = it
-                                    onTextChange(it)
-                                    error = true
-                                    errorMessage = generateTextError()
-                                }
-                            },
-                            visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-                            modifier = Modifier.fillMaxWidth()
-                        )
+                    } else {
+                        Column(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.Start,
+                        ) {
+                            Text(
+                                text = inputName,
+                                style = TextXS1Regular,
+                                color = Gray900,
+                                modifier = Modifier
+                                    .padding(start = 1.dp)
+                                    .offset(y = if (isClickedInput || text.isNotEmpty()) (-5).dp else 0.dp)
+                                    .background(White2)
+                            )
+                            BasicTextField(
+                                value = text,
+                                textStyle = TextBaseRegular,
+                                maxLines = 1,
+                                onValueChange = {
+                                    if (validateInput(it)) {
+                                        text = it
+                                        onTextChange(it)
+                                        error = false
+                                    } else {
+                                        text = it
+                                        onTextChange(it)
+                                        error = true
+                                        errorMessage = generateTextError()
+                                    }
+                                },
+                                visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
                     }
-                }
 
-                Spacer(modifier = Modifier.height(24.dp))
+                    Spacer(modifier = Modifier.height(24.dp))
 
-                Row() {
-                    if (error) {
-                        Image(
-                            painter = painterResource(id = R.drawable.warning),
-                            contentDescription = "Warning",
-                        )
-                    }
-                    if (inputType == "password") {
-                        Image(
-                            painter = painterResource(id = if (isPasswordVisible) R.drawable.notshow else R.drawable.show),
-                            contentDescription = "Hide/Show Password",
-                            modifier = Modifier
-                                .clickable { isPasswordVisible = !isPasswordVisible }
-                        )
+                    Row() {
+                        if (error) {
+                            Image(
+                                painter = painterResource(id = R.drawable.warning),
+                                contentDescription = "Warning",
+                            )
+                        }
+                        if (inputType == "password") {
+                            Image(
+                                painter = painterResource(id = if (isPasswordVisible) R.drawable.notshow else R.drawable.show),
+                                contentDescription = "Hide/Show Password",
+                                modifier = Modifier
+                                    .clickable { isPasswordVisible = !isPasswordVisible }
+                            )
+                        }
                     }
                 }
             }
         }
+
     if (error) {
         Row (
             modifier = Modifier
