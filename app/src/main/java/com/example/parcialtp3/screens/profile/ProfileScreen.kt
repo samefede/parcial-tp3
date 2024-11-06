@@ -6,9 +6,9 @@ import androidx.compose.ui.Modifier
 import com.example.parcialtp3.navigation.MainNavAction
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -54,16 +54,16 @@ fun ProfileScreen(
 
             Spacer(modifier = Modifier.size(40.dp))
 
-            LinkItem(buttonName = "Mis datos", "", isFirst = true, isLast = false)
-            LinkItem(buttonName = "Mi CVU", "", isFirst = false, isLast = false)
-            LinkItem(buttonName = "Configuración", "", isFirst = false, isLast = false)
-            LinkItem(buttonName = "Ayuda", "", isFirst = false, isLast = false)
-            LinkItem(buttonName = "Términos y condiciones", "", isFirst = false, isLast = false)
-            LinkItem(buttonName = "Cerrar sesión", "", isFirst = false, isLast = true)
+            LinkItem(buttonName = "Mis datos", description = "", isFirst = true, isLast = false)
+            LinkItem(modifier = Modifier.offset(y = (-1).dp), buttonName = "Mi CVU", "", isFirst = false, isLast = false)
+            LinkItem(modifier = Modifier.offset(y = (-2).dp), buttonName = "Configuración", "", isFirst = false, isLast = false)
+            LinkItem(modifier = Modifier.offset(y = (-3).dp), buttonName = "Ayuda", "", isFirst = false, isLast = false)
+            LinkItem(modifier = Modifier.offset(y = (-4).dp), buttonName = "Términos y condiciones", "", isFirst = false, isLast = false)
+            LinkItem(modifier = Modifier.offset(y = (-5).dp), buttonName = "Cerrar sesión", "", isFirst = false, isLast = true)
 
             Spacer(modifier = Modifier.size(40.dp))
 
-            LinkItem(buttonName = "Dark Mode", "", isFirst = true, isLast = true)
+            LinkItem(buttonName = "Dark Mode", description = "", isFirst = true, isLast = true)
 
             Spacer(modifier = Modifier.size(40.dp))
         }
