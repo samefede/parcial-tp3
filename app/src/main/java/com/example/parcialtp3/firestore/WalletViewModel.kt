@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.tasks.await
 
 class WalletViewModel : ViewModel() {
     private val _wallet = MutableLiveData<List<Wallet>>()
@@ -12,7 +11,7 @@ class WalletViewModel : ViewModel() {
     private val firebaseFireStore = FirebaseFirestore.getInstance()
     private val walletCollection = firebaseFireStore.collection("wallet")
 
-    suspend fun fetchWallet() {
+    fun fetchWallet() {
         walletCollection.get().addOnSuccessListener { result ->
             val walletList = mutableListOf<Wallet>()
             for (document in result) {

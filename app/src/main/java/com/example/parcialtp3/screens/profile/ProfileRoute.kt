@@ -8,5 +8,5 @@ import com.example.parcialtp3.navigation.MainNavAction
 fun ProfileRoute(
     navigationAction: MainNavAction, isDarkTheme: MutableState<Boolean>
 ){
-    ProfileScreen(navigationAction, isDarkTheme = isDarkTheme)
+    ProfileScreen(isDarkTheme = isDarkTheme)
 }

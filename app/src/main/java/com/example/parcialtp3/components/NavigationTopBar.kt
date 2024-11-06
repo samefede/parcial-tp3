@@ -5,18 +5,15 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -25,7 +22,7 @@ import com.example.parcialtp3.R
 import com.example.parcialtp3.navigation.MainNavAction
 
 @Composable
-fun NavigationTopBar(onClick : () -> Unit, quitScreen: () -> Unit, topBarColor: Color, title: String, titleStyle: TextStyle, titleColor: Color, navigationAction: MainNavAction){
+fun NavigationTopBar(onClick : () -> Unit, quitScreen: () -> Unit, topBarColor: Color, title: String, titleStyle: TextStyle, titleColor: Color){
     Box(modifier = Modifier
         .background(topBarColor)
         .padding(top = 30.dp, start = 25.dp, end = 25.dp)

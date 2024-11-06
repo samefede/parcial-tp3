@@ -7,5 +7,5 @@ import com.example.parcialtp3.navigation.MainNavAction
 fun AccountRoute(
     navigationAction: MainNavAction
 ){
-    AccountScreen(navigationAction = navigationAction)
+    AccountScreen()
 }

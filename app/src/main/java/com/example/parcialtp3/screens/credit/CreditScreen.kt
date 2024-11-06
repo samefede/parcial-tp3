@@ -3,7 +3,6 @@ package com.example.parcialtp3.screens.credit
 import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.parcialtp3.navigation.MainNavAction
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,10 +31,7 @@ import com.example.parcialtp3.ui.theme.TextXS1Regular
 import com.example.parcialtp3.ui.theme.TextXS2Bold
 
 @Composable
-fun CreditScreen(
-    navigationAction: MainNavAction,
-    modifier: Modifier = Modifier
-){
+fun CreditScreen() {
     LazyColumn (
         modifier = Modifier
             .fillMaxSize()

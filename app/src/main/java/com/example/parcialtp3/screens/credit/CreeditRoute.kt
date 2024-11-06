@@ -7,5 +7,5 @@ import com.example.parcialtp3.navigation.MainNavAction
 fun CreditRoute(
     navigationAction: MainNavAction,
 ){
-    CreditScreen(navigationAction = navigationAction)
+    CreditScreen()
 }

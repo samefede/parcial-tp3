@@ -50,8 +50,6 @@ fun Card(cardNumber: String){
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(336f / 212f)
-//                .width(336.dp)
-//                .height(212.dp)
                 .background(Green800, shape = RoundedCornerShape(12.dp))
                 .clip(RoundedCornerShape(12.dp))
         ){
@@ -77,7 +75,6 @@ fun Card(cardNumber: String){
                         painter = painterResource(id = R.drawable.waynimovil),
                         contentDescription = "Logo App",
                         modifier = Modifier
-//                            .size(40.dp)
                             .height(28.09.dp)
                     )
                 }

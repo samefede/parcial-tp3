@@ -27,16 +27,12 @@ import com.example.parcialtp3.components.MovementRow
 import com.example.parcialtp3.components.TotalAmountCard
 import com.example.parcialtp3.firestore.Transaction
 import com.example.parcialtp3.firestore.WalletViewModel
-import com.example.parcialtp3.navigation.MainNavAction
 import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.Gray100
 import com.example.parcialtp3.ui.theme.TextXS1Bold
 
 @Composable
-fun AccountScreen(
-    navigationAction: MainNavAction,
-
-    ){
+fun AccountScreen() {
     val walletViewModel: WalletViewModel = viewModel()
 
     LaunchedEffect(Unit) {

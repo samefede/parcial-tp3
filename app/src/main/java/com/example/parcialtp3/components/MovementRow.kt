@@ -48,15 +48,13 @@ fun MovementRow(date: String, description: String, transactionId: String, amount
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            // Fecha
             Text(
                 text = date,
                 style = TextXS1Regular,
                 color = Black,
-                modifier = Modifier.width(78.dp) //TODO: REVISAR DP
+                modifier = Modifier.width(78.dp)
             )
 
-            // Descripción y Autorización
             Column (
                 modifier = Modifier
                     .fillMaxHeight()

@@ -7,7 +7,6 @@ import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.Gray100
 import com.example.parcialtp3.ui.theme.TextBaseBold
 import com.example.parcialtp3.ui.theme.TextXL1Bold
-import com.example.parcialtp3.ui.theme.White
 import com.example.parcialtp3.ui.theme.White2
 
 object AppDestinations{
