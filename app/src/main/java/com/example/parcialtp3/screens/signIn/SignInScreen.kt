@@ -24,6 +24,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.parcialtp3.screens.signIn.SignInViewModel
@@ -50,8 +51,8 @@ fun SignIn(
     modifier: Modifier = Modifier
 ) {
     val viewModel: SignInViewModel = viewModel()
-    var username by remember { mutableStateOf("mor_2314") }
-    var password by remember { mutableStateOf("83r5^_") }
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
     var loginResponse by remember { mutableStateOf<String?>(null) }
 
     val offsetY = remember { Animatable(400f) }
@@ -159,9 +160,12 @@ fun SignIn(
                         .weight(1.2f)
                         .fillMaxWidth()
                         .offset(y = offsetY.value.dp)
+                        .shadow(20.dp, RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
                         .clip(RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp))
                         .background(MaterialTheme.colorScheme.background)
+
                         .padding(horizontal = 12.dp, vertical = 24.dp)
+
                 ) {
                     Column() {
                         Text(

@@ -82,7 +82,7 @@ fun Input(inputName: String, inputType: String, onTextChange: (String) -> Unit) 
                     if (!isClickedInput) {
                         it
                     } else {
-                        it.background(Gray500)
+                        it.background(Gray500.copy(alpha = 0.3f))
                     }
                 },
                     contentAlignment = Alignment.Center
