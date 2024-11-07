@@ -20,7 +20,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.parcialtp3.R
@@ -28,9 +27,8 @@ import com.example.parcialtp3.components.MovementRow
 import com.example.parcialtp3.components.TotalAmountCard
 import com.example.parcialtp3.firestore.Transaction
 import com.example.parcialtp3.firestore.WalletViewModel
-import com.example.parcialtp3.ui.theme.Black
-import com.example.parcialtp3.ui.theme.Gray100
 import com.example.parcialtp3.ui.theme.TextXS1Bold
+import com.example.parcialtp3.ui.theme.White2
 
 @Composable
 fun AccountScreen() {
@@ -86,11 +84,11 @@ fun AccountScreen() {
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.onSecondaryContainer)
+                .background(MaterialTheme.colorScheme.surfaceContainerLow)
                 .fillMaxWidth()
                 .height(35.dp)
         ) {
-            Text(text = "MOVIMIENTOS", style = TextXS1Bold, color = MaterialTheme.colorScheme.surface, modifier = Modifier.padding(start = 10.dp))
+            Text(text = "MOVIMIENTOS", style = TextXS1Bold, color = White2, modifier = Modifier.padding(start = 10.dp))
         }
 
         LazyColumn(

@@ -21,15 +21,10 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.Elevation
-import com.example.parcialtp3.ui.theme.Gray500
-import com.example.parcialtp3.ui.theme.Gray900
-import com.example.parcialtp3.ui.theme.Purple900
 import com.example.parcialtp3.ui.theme.Shapes
 import com.example.parcialtp3.ui.theme.TextXS1Bold
 import com.example.parcialtp3.ui.theme.TextXS1Regular
-import com.example.parcialtp3.ui.theme.White2
 
 @Composable
 fun TotalAmountCard(amount: Double, cvu: String) {
@@ -62,7 +57,7 @@ fun TotalAmountCard(amount: Double, cvu: String) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Row() {
+                Row {
                     Text(
                         text = "CVU: ",
                         color = MaterialTheme.colorScheme.tertiary,

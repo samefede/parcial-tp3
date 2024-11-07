@@ -15,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.graphics.ColorFilter
 import com.example.parcialtp3.ui.theme.Black
+import com.example.parcialtp3.ui.theme.Elevation
 import com.example.parcialtp3.ui.theme.TextXS2Bold
 
 @Composable
@@ -39,8 +40,8 @@ fun ActionCard(
 
     Card(
         shape = shape,
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background ),
-        //elevation = CardDefaults.cardElevation(Elevation),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.onSecondaryContainer ),
+        elevation = CardDefaults.cardElevation(Elevation),
         modifier = modifier
             .fillMaxWidth().height(96.dp) //130 110
             .border(
