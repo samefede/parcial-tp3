@@ -65,7 +65,7 @@ fun TotalAmountCard(amount: Double, cvu: String) {
                     )
                     Text(
                         text = cvu,
-                        color = MaterialTheme.colorScheme.secondary,
+                        color = MaterialTheme.colorScheme.surface,
                         style = TextXS1Bold,
                         textAlign = TextAlign.Center,
                     )
