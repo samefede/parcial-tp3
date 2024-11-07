@@ -41,13 +41,14 @@ import com.example.parcialtp3.ui.theme.White2
 
 @Composable
 fun LinkItem(
-            buttonName: String,
-             description: String = "",
-             isFirst: Boolean = false,
-             isLast: Boolean = false,
-             isSwitch: Boolean = false,
-             switched: Boolean = false,
-             onSwitchedChange: (Boolean) -> Unit
+    buttonName: String,
+    description: String = "",
+    isFirst: Boolean = false,
+    isLast: Boolean = false,
+    isSwitch: Boolean = false,
+    switched: Boolean = false,
+    onSwitchedChange: (Boolean) -> Unit = {},
+    onLogout: () -> Unit = {}
 ) {
     val descriptionEmpty = description.isEmpty()
     val shape = when {
@@ -66,7 +67,13 @@ fun LinkItem(
             .clip(shape)
             .background(MaterialTheme.colorScheme.surfaceContainer)
             .border(1.dp, MaterialTheme.colorScheme.outline, shape)
-            .clickable { isClicked = !isClicked }
+            .clickable {
+                isClicked = !isClicked
+
+                if (buttonName == "Cerrar sesión") {
+                    onLogout()
+                }
+            }
             .padding(horizontal = 12.dp, vertical = if (descriptionEmpty) 8.dp else 16.dp),
         contentAlignment = Alignment.Center
     ) {

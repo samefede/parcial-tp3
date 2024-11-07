@@ -74,7 +74,7 @@ fun MainRouteNav(
             enterTransition = enterTransition,
             exitTransition = exitTransition,
         ){
-            ProfileRoute(isDarkTheme = isDarkTheme)
+            ProfileRoute(isDarkTheme = isDarkTheme, navController = navController)
         }
 
         composable(route = AppDestinations.SERVICE_ROUTE){
