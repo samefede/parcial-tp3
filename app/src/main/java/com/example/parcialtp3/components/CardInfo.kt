@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,7 +28,7 @@ fun CardInfo(cardNumber: String, amount: String) {
         modifier = Modifier
             .size(width = 336.dp, height = 249.dp)
             .shadow(elevation = 6.dp, shape = RoundedCornerShape(8.dp))
-            .background(color = Color.White, shape = RoundedCornerShape(8.dp))
+            .background(color = MaterialTheme.colorScheme.onSecondaryContainer, shape = RoundedCornerShape(8.dp))
             .border(BorderStroke(1.dp, Gray500), shape = RoundedCornerShape(8.dp)),
         contentAlignment = Alignment.Center
     ) {
@@ -50,7 +51,7 @@ fun CardInfo(cardNumber: String, amount: String) {
 
             Text(
                 text = amount,
-                color = Black,
+                color = MaterialTheme.colorScheme.surface,
                 style = TextXL4,
                 textAlign = TextAlign.Center
             )

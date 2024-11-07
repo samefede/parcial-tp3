@@ -11,22 +11,19 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.Gray500
 import com.example.parcialtp3.ui.theme.Green900
 import com.example.parcialtp3.ui.theme.Red900
 import com.example.parcialtp3.ui.theme.TextXS1Bold
 import com.example.parcialtp3.ui.theme.TextXS1Regular
-import com.example.parcialtp3.ui.theme.White
 import com.example.parcialtp3.ui.theme.White2
 import java.util.Locale
 
@@ -40,7 +37,7 @@ fun MovementRow(date: String, description: String, transactionId: String, amount
         modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
-            .background(White2)
+            .background(MaterialTheme.colorScheme.onSecondaryContainer)
             .border(1.dp, Gray500)
             .padding(horizontal = 12.dp, vertical = 8.dp)
     ) {
@@ -48,15 +45,13 @@ fun MovementRow(date: String, description: String, transactionId: String, amount
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            // Fecha
             Text(
                 text = date,
                 style = TextXS1Regular,
-                color = Black,
-                modifier = Modifier.width(78.dp) //TODO: REVISAR DP
+                color = MaterialTheme.colorScheme.surfaceContainerLow,
+                modifier = Modifier.width(78.dp)
             )
 
-            // Descripción y Autorización
             Column (
                 modifier = Modifier
                     .fillMaxHeight()
@@ -66,13 +61,13 @@ fun MovementRow(date: String, description: String, transactionId: String, amount
                 Text(
                     text = description,
                     style = TextXS1Regular,
-                    color = Black,
+                    color = MaterialTheme.colorScheme.surfaceContainerLow,
                     maxLines = 1
                 )
                 Text(
                     text = "Aut. $transactionId",
                     style = TextXS1Regular,
-                    color = Black,
+                    color =  MaterialTheme.colorScheme.surfaceTint,
                     maxLines = 1
                 )
 

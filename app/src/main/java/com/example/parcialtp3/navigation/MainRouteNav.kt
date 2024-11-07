@@ -8,6 +8,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
@@ -29,7 +30,8 @@ fun MainRouteNav(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
     startDestination: String = AppDestinations.SPLASH_ROUTE,
-    navigationActions: MainNavAction
+    navigationActions: MainNavAction,
+    isDarkTheme: MutableState<Boolean>
 ) {
 
     val enterTransition: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition = {
@@ -60,11 +62,11 @@ fun MainRouteNav(
         }
 
         composable(route = AppDestinations.ACCOUNT_ROUTE) {
-           AccountRoute(navigationAction = navigationActions)
+           AccountRoute()
         }
 
         composable(route = AppDestinations.CREDIT_ROUTE){
-            CreditRoute(navigationAction = navigationActions)
+            CreditRoute()
         }
 
         composable(
@@ -72,7 +74,7 @@ fun MainRouteNav(
             enterTransition = enterTransition,
             exitTransition = exitTransition,
         ){
-            ProfileRoute(navigationAction = navigationActions)
+            ProfileRoute(isDarkTheme = isDarkTheme, navController = navController)
         }
 
         composable(route = AppDestinations.SERVICE_ROUTE){

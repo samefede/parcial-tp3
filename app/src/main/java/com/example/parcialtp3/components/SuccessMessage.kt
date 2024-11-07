@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,7 +40,7 @@ fun SuccessMessage() {
 
             Text(
                 text = "Tu operación se ha realizado con éxito",
-                color = Black,
+                color = MaterialTheme.colorScheme.surface,
                 style = TextXL2Bold,
                 textAlign = TextAlign.Center
             )

@@ -7,6 +7,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -31,8 +32,8 @@ fun ServiceCard(iconResId: Int, serviceText: String, onClick: () -> Unit = {}) {
             .widthIn(min = 160.dp)
             .height(138.dp)
             .shadow(elevation = 6.dp, shape = RoundedCornerShape(8.dp))
-            .background(color = Color.White, shape = RoundedCornerShape(8.dp))
-            .border(BorderStroke(1.dp, Gray500), shape = RoundedCornerShape(8.dp))
+            .background(color = MaterialTheme.colorScheme.onSecondaryContainer, shape = RoundedCornerShape(8.dp))
+            .border(BorderStroke(1.dp, MaterialTheme.colorScheme.onSecondaryContainer), shape = RoundedCornerShape(8.dp))
             .clickable { onClick() },
         contentAlignment = Alignment.Center
     ) {
@@ -64,7 +65,7 @@ fun ServiceCard(iconResId: Int, serviceText: String, onClick: () -> Unit = {}) {
             Text(
                 text = serviceText,
                 style = TextXS2Bold,
-                color = Black,
+                color = MaterialTheme.colorScheme.surface,
                 textAlign = TextAlign.Center,
             )
         }

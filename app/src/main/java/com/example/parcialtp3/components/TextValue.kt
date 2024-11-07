@@ -2,6 +2,7 @@ package com.example.parcialtp3.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,15 +16,15 @@ import com.example.parcialtp3.ui.theme.White2
 
 @Composable
 fun TextValue( label: String, value: String) {
-    Row(modifier = Modifier.background(White2)) {
+    Row(modifier = Modifier.background(MaterialTheme.colorScheme.onSecondaryContainer)) {
         Text(
             text = label,
-            color = Gray900,
+            color = MaterialTheme.colorScheme.tertiary,
             style = TextBaseRegular,
         )
         Text(
             text = value,
-            color = Black,
+            color = MaterialTheme.colorScheme.surface,
             style = TextBaseBold,
             textAlign = TextAlign.Center,
         )

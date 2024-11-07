@@ -11,21 +11,56 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 
 /* COLOR PALETTE */
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Black,
+    secondary = Green800,
+    onSecondary = Purple900,
+    onSecondaryContainer = Purple900,
+    tertiary = Pink80,
+    tertiaryContainer = Purple80,
+    background = Black,
+    onBackground = Purple80,
+    surface = White2,
+    surfaceTint = Green900,
+    surfaceContainerLow = Green800,
+    surfaceContainer = Black,
+    surfaceVariant = Gray300,
+    surfaceDim = Gray900,
+    surfaceBright = Purple900,
+    inverseSurface = Purple80,
+    onSurfaceVariant = Green800,
+    errorContainer = Purple900,
+    error = White2,
+    outline = Purple80
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-)
+    primary = Green800,
+    secondary = Purple900,
+    onSecondary = Green800,
+    onSecondaryContainer = White2,
+    tertiary = Gray900,
+    tertiaryContainer = Green900,
+    background = Gray100,
+    onBackground = Purple900,
+    surface = Black,
+    surfaceTint = Black,
+    surfaceContainerLow = Black,
+    surfaceContainer = White2,
+    surfaceVariant = White2,
+    surfaceDim = Green800,
+    surfaceBright = Color(0xFFD1D1D7),
+    inverseSurface = White,
+    onSurfaceVariant = Green800,
+    errorContainer = Red900,
+    error = White2,
+    outline = Gray500
+    )
 
 /* BORDER RADIUS */
 val Shapes = Shapes(
@@ -36,22 +71,17 @@ val Shapes = Shapes(
 )
 
 val Elevation = 4.dp
+
 @Composable
 fun ParcialTP3Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
-
     MaterialTheme(
         colorScheme = colorScheme,
         content = content,

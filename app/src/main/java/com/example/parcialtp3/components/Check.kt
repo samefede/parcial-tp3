@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -74,7 +75,7 @@ fun CustomRadioButton(text: String) {
         Text(
             text = text.replaceFirstChar { it.uppercase() },
             style = TextXS1Regular,
-            color = Black,
+            color = MaterialTheme.colorScheme.surface,
             modifier = Modifier
                 .padding(start = 8.dp)
         )

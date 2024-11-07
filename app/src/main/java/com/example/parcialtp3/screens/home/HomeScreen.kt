@@ -11,9 +11,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -28,10 +27,7 @@ import com.example.parcialtp3.components.TextSize
 import com.example.parcialtp3.components.TotalAmount
 import com.example.parcialtp3.firestore.WalletViewModel
 import com.example.parcialtp3.navigation.MainNavAction
-import com.example.parcialtp3.ui.theme.Black
 import com.example.parcialtp3.ui.theme.Gray100
-import com.example.parcialtp3.ui.theme.TextXL1Bold
-import com.example.parcialtp3.ui.theme.TextXS2Regular
 
 @Composable
 fun HomeScreen(
@@ -49,7 +45,7 @@ fun HomeScreen(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .background(Gray100)
+            .background(MaterialTheme.colorScheme.background)
             .padding(end = 12.dp, top = 12.dp, start = 12.dp)
     ) {
         item {
@@ -99,7 +95,7 @@ fun HomeScreen(
                 Row(modifier = Modifier.fillMaxWidth().height(96.dp)){
                     LazyVerticalGrid(columns = GridCells.Fixed(3)) {
                         item {
-                            ActionCard(iconResId = R.drawable.recargasube, textLine1 = "Recarga", textLine2 = "Sube", bottomLeftCornerRadius = 8.dp)
+                            ActionCard(iconResId = R.drawable.recargasube, textLine1 = "Recarga", textLine2 = "Sube", bottomLeftCornerRadius = 8.dp, onClick = { navigationAction.navigateToCardCharge() })
                         }
                         item {
                             ActionCard(iconResId = R.drawable.recargacelu, textLine1 = "Recarga", textLine2 = "Celular")

@@ -1,11 +1,13 @@
 package com.example.parcialtp3.screens.profile
 
 import androidx.compose.runtime.Composable
-import com.example.parcialtp3.navigation.MainNavAction
+import androidx.compose.runtime.MutableState
+import androidx.navigation.NavController
 
 @Composable
 fun ProfileRoute(
-    navigationAction: MainNavAction
+    isDarkTheme: MutableState<Boolean>,
+    navController: NavController
 ){
-    ProfileScreen(navigationAction)
+    ProfileScreen(isDarkTheme = isDarkTheme, navController = navController)
 }

@@ -3,6 +3,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -11,9 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.parcialtp3.R
 import com.example.parcialtp3.ui.theme.Red900
 import com.example.parcialtp3.ui.theme.TextXS2Bold
@@ -30,7 +29,8 @@ fun AlertCustom(
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp),
-        colors = CardDefaults.cardColors(containerColor = Red900)
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.errorContainer),
+        onClick = { }
     ) {
         Row(
             modifier = Modifier
@@ -39,25 +39,22 @@ fun AlertCustom(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            // Column for the alert text and link text
             Column(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.Start
             ) {
                 Text(
                     text = alertText.replaceFirstChar { it.uppercase() },
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.error,
                     style = TextXS2Regular
                 )
                 Spacer(modifier = Modifier.height(1.dp))
                 Text(
                     text = linkText.replaceFirstChar { it.uppercase() },
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.error,
                     style = TextXS2Bold.copy(textDecoration = TextDecoration.Underline),
                 )
             }
-
-            // Icon aligned to the right
             Image(
                 painter = painterResource(id = R.drawable.next),
                 contentDescription = null,

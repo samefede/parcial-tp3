@@ -6,16 +6,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -23,26 +20,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.parcialtp3.components.TotalAmountCard
-import com.example.parcialtp3.firestore.WalletViewModel
-import com.example.parcialtp3.navigation.MainNavAction
 import com.example.parcialtp3.R
 import com.example.parcialtp3.components.MovementRow
+import com.example.parcialtp3.components.TotalAmountCard
 import com.example.parcialtp3.firestore.Transaction
-import com.example.parcialtp3.firestore.Transactions
-import com.example.parcialtp3.ui.theme.Black
-import com.example.parcialtp3.ui.theme.Gray100
+import com.example.parcialtp3.firestore.WalletViewModel
 import com.example.parcialtp3.ui.theme.TextXS1Bold
-import com.example.parcialtp3.ui.theme.White
+import com.example.parcialtp3.ui.theme.White2
 
 @Composable
-fun AccountScreen(
-    navigationAction: MainNavAction,
-
-    ){
+fun AccountScreen() {
     val walletViewModel: WalletViewModel = viewModel()
 
     LaunchedEffect(Unit) {
@@ -60,8 +49,7 @@ fun AccountScreen(
     println("Bank Account Transactions: $bankAccountTransactions")
     Column(
         modifier = Modifier
-            .background(Gray100)
-            .padding(top = 16.dp),
+            .background(MaterialTheme.colorScheme.background),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column (
@@ -96,13 +84,11 @@ fun AccountScreen(
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .background(Black)
+                .background(MaterialTheme.colorScheme.surfaceContainerLow)
                 .fillMaxWidth()
                 .height(35.dp)
         ) {
-            Text(text = "MOVIMIENTOS", style = TextXS1Bold, color = Color.White, modifier = Modifier.padding(start = 10.dp))
-
-
+            Text(text = "MOVIMIENTOS", style = TextXS1Bold, color = White2, modifier = Modifier.padding(start = 10.dp))
         }
 
         LazyColumn(
