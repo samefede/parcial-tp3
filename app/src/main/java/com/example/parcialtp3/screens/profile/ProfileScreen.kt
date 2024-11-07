@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -54,11 +55,12 @@ fun ProfileScreen(
             Spacer(modifier = Modifier.size(40.dp))
 
             LinkItem(buttonName = "Mis datos", isFirst = true)
-            LinkItem(buttonName = "Mi CVU")
-            LinkItem(buttonName = "Configuración")
-            LinkItem(buttonName = "Ayuda")
-            LinkItem(buttonName = "Términos y condiciones")
+            LinkItem(modifier = Modifier.offset(y = (-1).dp), buttonName = "Mi CVU")
+            LinkItem(modifier = Modifier.offset(y = (-2).dp), buttonName = "Configuración")
+            LinkItem(modifier = Modifier.offset(y = (-3).dp), buttonName = "Ayuda")
+            LinkItem(modifier = Modifier.offset(y = (-4).dp), buttonName = "Términos y condiciones")
             LinkItem(
+                modifier = Modifier.offset(y = (-5).dp),
                 buttonName = "Cerrar sesión",
                 isLast = true,
                 onLogout = {
@@ -70,7 +72,7 @@ fun ProfileScreen(
 
             Spacer(modifier = Modifier.size(40.dp))
 
-            LinkItem(buttonName = "Dark Mode", "", isFirst = true, isLast = true, isSwitch = true, switched = isDarkTheme.value, onSwitchedChange = {
+            LinkItem(buttonName = "Dark Mode",description = "", isFirst = true, isLast = true, isSwitch = true, switched = isDarkTheme.value, onSwitchedChange = {
                 isDarkTheme.value = !isDarkTheme.value
             })
 
