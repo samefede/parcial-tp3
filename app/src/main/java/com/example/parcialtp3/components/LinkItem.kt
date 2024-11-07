@@ -41,6 +41,7 @@ import com.example.parcialtp3.ui.theme.White2
 
 @Composable
 fun LinkItem(
+    modifier: Modifier = Modifier,
     buttonName: String,
     description: String = "",
     isFirst: Boolean = false,
@@ -61,7 +62,7 @@ fun LinkItem(
     var isClicked by remember { mutableStateOf(false) }
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(if (descriptionEmpty) 56.dp else 74.13.dp)
             .clip(shape)
